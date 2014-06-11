@@ -13,138 +13,138 @@
 -->
 <configuration>
 
-  <property>
-    <name>yarn.scheduler.capacity.maximum-applications</name>
-    <value>10000</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.maximum-applications</name>
+        <value>10000</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.maximum-am-resource-percent</name>
-    <value>0.25</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.maximum-am-resource-percent</name>
+        <value>0.25</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.resource-calculator</name>
-    <value>org.apache.hadoop.yarn.util.resource.DominantResourceCalculator</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.resource-calculator</name>
+        <value>org.apache.hadoop.yarn.util.resource.DominantResourceCalculator</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.node-locality-delay</name>
-    <value>5</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.node-locality-delay</name>
+        <value>5</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.queues</name>
-    <value>plsm1,plsm2</value>
-  </property>
-  
-<!-- Q1 -->
+    <property>
+        <name>yarn.scheduler.capacity.root.queues</name>
+        <value>plsm1,plsm2</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.capacity</name>
-    <value>90</value>
-  </property>
-  
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.maximum-capacity</name>
-    <value>100</value>
-  </property>
-  
-  <property>
-    <name>mapred.capacity-scheduler.root.plsm1.maximum-initialized-active-tasks</name>
-    <value>200</value>
-  </property>
-  
-  <property>
-    <name>mapred.capacity-scheduler.root.plsm1.maximum-initialized-active-tasks-per-user</name>
-	<value>100</value>
-  </property>
-	
-  <property>
-    <name>mapred.capacity-scheduler.root.plsm1.init-accept-jobs-factor</name>
-    <value>1</value>
-  </property>
+    <!-- Q1 -->
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.user-limit-factor</name>
-    <value>1</value>
-  </property>
-  
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.minimum-user-limit-percent</name>
-    <value>25</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.capacity</name>
+        <value>90</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.state</name>
-    <value>RUNNING</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.maximum-capacity</name>
+        <value>100</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.acl_submit_applications</name>
-    <value> hadoop,husers</value>
-  </property>
-  
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm1.acl_administer_queue</name>
-    <value> hadoop,husers</value>
-  </property>
+    <property>
+        <name>mapred.capacity-scheduler.root.plsm1.maximum-initialized-active-tasks</name>
+        <value>200</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.capacity</name>
-    <value>90</value>
-  </property>
+    <property>
+        <name>mapred.capacity-scheduler.root.plsm1.maximum-initialized-active-tasks-per-user</name>
+        <value>100</value>
+    </property>
 
-<!-- Q2 -->
+    <property>
+        <name>mapred.capacity-scheduler.root.plsm1.init-accept-jobs-factor</name>
+        <value>1</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.capacity</name>
-    <value>10</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.user-limit-factor</name>
+        <value>1</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.maximum-capacity</name>
-    <value>100</value>
-  </property>
-  
-  <property>
-    <name>mapred.capacity-scheduler.root.plsm2.maximum-initialized-active-tasks</name>
-    <value>200</value>
-  </property>
-  
-  <property>
-    <name>mapred.capacity-scheduler.root.plsm2.maximum-initialized-active-tasks-per-user</name>
-	<value>100</value>
-  </property>
-	
-  <property>
-    <name>mapred.capacity-scheduler.root.plsm2.init-accept-jobs-factor</name>
-    <value>1</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.minimum-user-limit-percent</name>
+        <value>25</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.user-limit-factor</name>
-    <value>1</value>
-  </property>
-  
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.minimum-user-limit-percent</name>
-    <value>50</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.state</name>
+        <value>RUNNING</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.state</name>
-    <value>RUNNING</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.acl_submit_applications</name>
+        <value> hadoop,husers</value>
+    </property>
 
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.acl_submit_applications</name>
-    <value>*</value>
-  </property>
-  
-  <property>
-    <name>yarn.scheduler.capacity.root.plsm2.acl_administer_queue</name>
-    <value>*</value>
-  </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm1.acl_administer_queue</name>
+        <value> hadoop,husers</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.capacity</name>
+        <value>90</value>
+    </property>
+
+    <!-- Q2 -->
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.capacity</name>
+        <value>10</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.maximum-capacity</name>
+        <value>100</value>
+    </property>
+
+    <property>
+        <name>mapred.capacity-scheduler.root.plsm2.maximum-initialized-active-tasks</name>
+        <value>200</value>
+    </property>
+
+    <property>
+        <name>mapred.capacity-scheduler.root.plsm2.maximum-initialized-active-tasks-per-user</name>
+        <value>100</value>
+    </property>
+
+    <property>
+        <name>mapred.capacity-scheduler.root.plsm2.init-accept-jobs-factor</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.user-limit-factor</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.minimum-user-limit-percent</name>
+        <value>50</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.state</name>
+        <value>RUNNING</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.acl_submit_applications</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.capacity.root.plsm2.acl_administer_queue</name>
+        <value>*</value>
+    </property>
 
 </configuration>

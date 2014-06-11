@@ -18,70 +18,70 @@
 
 <configuration>
 
-  <property>
-    <name>hadoop.tmp.dir</name>
-    <value>/var/lib/hadoop/tmp</value>
-  </property>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/var/lib/hadoop/tmp</value>
+    </property>
 
-  <property>
-    <name>fs.defaultFS</name>
-    <value>hdfs://namenode.plsm.cs.nccu.edu.tw</value>
-  </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://namenode.plsm.cs.nccu.edu.tw</value>
+    </property>
 
-  <property>   
-    <name>hadoop.security.authentication</name>   
-    <value>kerberos</value>   
-  </property> 
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>kerberos</value>
+    </property>
 
-  <property>  
-    <name>hadoop.security.authorization</name>  
-    <value>true</value>  
-  </property> 
+    <property>
+        <name>hadoop.security.authorization</name>
+        <value>true</value>
+    </property>
 
-  <property>   
-    <name>hadoop.rpc.protection</name>   
-    <value>privacy</value>   
-  </property> 
+    <property>
+        <name>hadoop.rpc.protection</name>
+        <value>privacy</value>
+    </property>
 
-  <property>
-    <name>hadoop.security.auth_to_local</name>    
-    <value>    
-    RULE:[2:$1@$0](jhs@PLSM)s/.*/mapred/    
-    RULE:[2:$1@$0]([nd]n@PLSM)s/.*/hdfs/
-    RULE:[2:$1@$0](HTTP@PLSM)s/.*/hdfs/
-    RULE:[2:$1@$0]([nr]m@PLSM)s/.*/yarn/    
-    RULE:[2:$1@$0](hbase@PLSM)s/.*/hbase/
-    DEFAULT</value> 
-  </property>
-  
-  <property>
-    <name>hadoop.http.authentication.type</name>
-    <value>kerberos</value>
-  </property>
-  
-  <property>
-    <name>hadoop.http.authentication.kerberos.principal</name>
-    <value>HTTP/_HOST@PLSM</value>
-  </property>
+    <property>
+        <name>hadoop.security.auth_to_local</name>
+        <value>
+            RULE:[2:$1@$0](jhs@PLSM)s/.*/mapred/
+            RULE:[2:$1@$0]([nd]n@PLSM)s/.*/hdfs/
+            RULE:[2:$1@$0](HTTP@PLSM)s/.*/hdfs/
+            RULE:[2:$1@$0]([nr]m@PLSM)s/.*/yarn/
+            RULE:[2:$1@$0](hbase@PLSM)s/.*/hbase/
+            DEFAULT</value>
+    </property>
 
-  <property>
-    <name>hadoop.http.authentication.kerberos.keytab</name>
-    <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
-  </property>
+    <property>
+        <name>hadoop.http.authentication.type</name>
+        <value>kerberos</value>
+    </property>
 
-  <property>
-     <name>hadoop.http.authentication.simple.anonymous.allowed</name>
-     <value>false</value>
-  </property>
-  
-  <property>
-    <name>io.compression.codecs</name>
-    <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.BZip2Codec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec</value>
-  </property>
+    <property>
+        <name>hadoop.http.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@PLSM</value>
+    </property>
 
-  <property>
-    <name>io.compression.codec.lzo.class</name>
-    <value>com.hadoop.compression.lzo.LzoCodec</value>
-  </property>
+    <property>
+        <name>hadoop.http.authentication.kerberos.keytab</name>
+        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+    </property>
+
+    <property>
+        <name>hadoop.http.authentication.simple.anonymous.allowed</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>io.compression.codecs</name>
+        <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.BZip2Codec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec</value>
+    </property>
+
+    <property>
+        <name>io.compression.codec.lzo.class</name>
+        <value>com.hadoop.compression.lzo.LzoCodec</value>
+    </property>
 
 </configuration>

@@ -14,135 +14,135 @@
 -->
 <configuration>
 
-  <property>
-    <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
-    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-  </property>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
 
-  <property>
-    <name>yarn.resourcemanager.hostname</name>
-    <value>ck</value>
-  </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
 
-  <property>
-    <name>yarn.nodemanager.container-executor.class</name>
-    <value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.linux-container-executor.group</name>
-    <value>hadoop</value>
-  </property>
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>ck</value>
+    </property>
 
-  <property>
-    <name>yarn.web-proxy.keytab</name>
-    <value>/etc/hadoop/keytabs/rm.service.keytab</value>
-  </property>
-   
-  <property>
-   <name>yarn.web-proxy.principal</name>
-   <value>wap/_HOST@PLSM</value>
-  </property>
- 
-  <property>
-    <name>yarn.resourcemanager.keytab</name>
-    <value>/etc/hadoop/keytabs/rm.service.keytab</value>
-  </property>
-  
-  <property>
-    <name>yarn.resourcemanager.principal</name>
-    <value>rm/_HOST@PLSM</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.local-dirs</name>
-    <value>/var/lib/hadoop/yarn/nm-local-dir</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.health-checker.script.timeout-ms</name>
-    <value>60000</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.remote-app-log-dir</name>
-    <value>/hadoop/logs</value>
-  </property>
-  
-  <property>
-    <name>yarn.log.server.url</name>
-    <value>ck:19888/jobhistory/logs</value>
-  </property>
-<!--  
-  <property>
-    <name>yarn.scheduler.maximum-allocation-mb</name>
-    <value>3072</value>
-  </property>
-  
-  <property>
-    <name>yarn.scheduler.minimum-allocation-mb</name>
-    <value>768</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.health-checker.interval-ms</name>
-    <value>135000</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.resource.memory-mb</name>
-    <value>3072</value>
-  </property>
- 
-  <property>
-    <name>yarn.app.mapreduce.am.resource.mb</name>
-    <value>1536</value>
-  </property>
- 
-  <property>
-    <name>yarn.app.mapreduce.am.command-opts</name>
-    <value>-Xmx1024m</value>
-  </property> 
---> 
+    <property>
+        <name>yarn.nodemanager.container-executor.class</name>
+        <value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>
+    </property>
 
-  <property>
-    <name>yarn.resourcemanager.scheduler.class</name>
-    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.log-aggregation.compression-type</name>
-    <value>gz</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.health-checker.script.path</name>
-    <value>/usr/hadoop/sbin/health_check</value>
-  </property>
-  
-  <property>
-    <name>yarn.log-aggregation.retain-seconds</name>
-    <value>-1</value>
-  </property>
+    <property>
+        <name>yarn.nodemanager.linux-container-executor.group</name>
+        <value>hadoop</value>
+    </property>
 
-  <property>
-    <name>yarn.log-aggregation-enable</name>
-    <value>true</value>
-  </property>
- 
-  <property>
-    <name>yarn.nodemanager.keytab</name>
-    <value>/etc/hadoop/keytabs/nm.service.keytab</value>
-  </property>
-  
-  <property>
-    <name>yarn.nodemanager.principal</name>
-    <value>nm/_HOST@PLSM</value>
-  </property>
+    <property>
+        <name>yarn.web-proxy.keytab</name>
+        <value>/etc/hadoop/keytabs/rm.service.keytab</value>
+    </property>
+
+    <property>
+        <name>yarn.web-proxy.principal</name>
+        <value>wap/_HOST@PLSM</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.keytab</name>
+        <value>/etc/hadoop/keytabs/rm.service.keytab</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.principal</name>
+        <value>rm/_HOST@PLSM</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>/var/lib/hadoop/yarn/nm-local-dir</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.health-checker.script.timeout-ms</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir</name>
+        <value>/hadoop/logs</value>
+    </property>
+
+    <property>
+        <name>yarn.log.server.url</name>
+        <value>ck:19888/jobhistory/logs</value>
+    </property>
+    <!--
+      <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>3072</value>
+      </property>
+
+      <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>768</value>
+      </property>
+
+      <property>
+        <name>yarn.nodemanager.health-checker.interval-ms</name>
+        <value>135000</value>
+      </property>
+
+      <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>3072</value>
+      </property>
+
+      <property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>1536</value>
+      </property>
+
+      <property>
+        <name>yarn.app.mapreduce.am.command-opts</name>
+        <value>-Xmx1024m</value>
+      </property>
+    -->
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.log-aggregation.compression-type</name>
+        <value>gz</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.health-checker.script.path</name>
+        <value>/usr/hadoop/sbin/health_check</value>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>-1</value>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.keytab</name>
+        <value>/etc/hadoop/keytabs/nm.service.keytab</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.principal</name>
+        <value>nm/_HOST@PLSM</value>
+    </property>
 
 </configuration>
