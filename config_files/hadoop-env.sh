@@ -25,7 +25,8 @@
 ################################################################################
 # The java implementation to use.
 #export JAVA_HOME=${JAVA_HOME}
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle-amd64
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle-amd64
+export HADOOP_ROOT_LOGGER="INFO,DRFA"
 ################################################################################
 
 # The jsvc implementation to use. Jsvc is required to run secure datanodes.
@@ -68,7 +69,7 @@ fi
 export HADOOP_NAMENODE_OPTS="-server -XX:+UseConcMarkSweepGC -XX:ErrorFile=/var/log/hadoop/hdfs/$USER/hs_err_pid%p.log -XX:NewSize=200m -XX:MaxNewSize=640m -Xloggc:/var/log/hadoop/hdfs/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Dhadoop.security.logger=${HADOOP_SECURITY_LOGGER:-INFO,DRFAS} -Dhdfs.audit.logger=${HDFS_AUDIT_LOGGER:-INFO,NullAppender} $HADOOP_NAMENODE_OPTS"
 
 #export HADOOP_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS $HADOOP_DATANODE_OPTS"
-export HADOOP_DATANODE_OPTS="-server -XX:+UseConcMarkSweepGC -XX:ErrorFile=/var/log/hadoop/hdfs/$USER/hs_err_pid%p.log -XX:NewSize=200m -XX:MaxNewSize=200m -Xloggc:/var/log/hadoop/hdfs/$USER/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Dhadoop.security.logger=ERROR,DRFAS $HADOOP_DATANODE_OPTS"
+export HADOOP_DATANODE_OPTS="-server -XX:+UseConcMarkSweepGC -XX:ErrorFile=/var/log/hadoop/hdfs/$USER/hs_err_pid%p.log -XX:NewSize=200m -XX:MaxNewSize=200m -Xloggc:/var/log/hadoop/hdfs/gc.log-`date +'%Y%m%d%H%M'` -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Dhadoop.security.logger=ERROR,DRFAS $HADOOP_DATANODE_OPTS"
 ################################################################################
 
 export HADOOP_SECONDARYNAMENODE_OPTS="-Dhadoop.security.logger=${HADOOP_SECURITY_LOGGER:-INFO,RFAS} -Dhdfs.audit.logger=${HDFS_AUDIT_LOGGER:-INFO,NullAppender} $HADOOP_SECONDARYNAMENODE_OPTS"

@@ -25,7 +25,7 @@
 
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://ck</value>
+        <value>hdfs://ck.plsm.cs.nccu.edu.tw</value>
     </property>
 
     <property>
@@ -46,11 +46,11 @@
     <property>
         <name>hadoop.security.auth_to_local</name>
         <value>
-            RULE:[2:$1@$0](jhs@PLSM.CS.NCCU.EDU.TW)s/.*/mapred/
-            RULE:[2:$1@$0]([nd]n@PLSM.CS.NCCU.EDU.TW)s/.*/hdfs/
-            RULE:[2:$1@$0](HTTP@PLSM.CS.NCCU.EDU.TW)s/.*/hdfs/
-            RULE:[2:$1@$0]([nr]m@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
-            RULE:[2:$1@$0](hbase@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
+            RULE:[2:$1@$0](jhs@.*)s/.*/mapred/
+            RULE:[2:$1@$0]([nd]n@.*)s/.*/hdfs/
+            RULE:[2:$1@$0](HTTP@.*)s/.*/hdfs/
+            RULE:[2:$1@$0]([nr]m@.*)s/.*/yarn/
+            RULE:[2:$1@$0](hbase@.*)s/.*/hbase/
             DEFAULT</value>
     </property>
 
