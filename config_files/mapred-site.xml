@@ -35,7 +35,7 @@
 
     <property>
         <name>mapreduce.jobhistory.principal</name>
-        <value>jhs/_HOST@PLSM</value>
+        <value>jhs/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
     <property>

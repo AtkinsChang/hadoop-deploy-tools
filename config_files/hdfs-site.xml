@@ -145,7 +145,7 @@
 
     <property>
         <name>dfs.namenode.kerberos.principal</name>
-        <value>nn/_HOST@PLSM</value>
+        <value>nn/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
     <property>
@@ -160,7 +160,7 @@
 
     <property>
         <name>dfs.web.authentication.kerberos.principal</name>
-        <value>HTTP/_HOST@PLSM</value>
+        <value>HTTP/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
     <property>
@@ -170,7 +170,7 @@
 
     <property>
         <name>dfs.datanode.kerberos.principal</name>
-        <value>dn/_HOST@PLSM</value>
+        <value>dn/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
     <property>
@@ -180,12 +180,12 @@
 
     <property>
         <name>dfs.datanode.kerberos.https.principal</name>
-        <value>host/_HOST@PLSM</value>
+        <value>host/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
     <property>
         <name>dfs.namenode.kerberos.https.principal</name>
-        <value>host/_HOST@PLSM</value>
+        <value>host/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
     <property>
@@ -195,7 +195,7 @@
 
     <property>
         <name>dfs.nfs.kerberos.principal</name>
-        <value>hdfs@PLSM</value>
+        <value>hdfs@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
 </configuration>
