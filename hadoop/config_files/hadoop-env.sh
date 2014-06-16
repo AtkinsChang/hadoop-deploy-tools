@@ -25,7 +25,7 @@
 ################################################################################
 # The java implementation to use.
 #export JAVA_HOME=${JAVA_HOME}
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle-amd64
+export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/java-7-oracle-amd64}
 ################################################################################
 
 # The jsvc implementation to use. Jsvc is required to run secure datanodes.

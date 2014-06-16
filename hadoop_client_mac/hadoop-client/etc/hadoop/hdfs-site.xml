@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+    <property>
+        <name>dfs.nfs3.dump.dir</name>
+        <value>/var/lib/hadoop/hdfs/nfs</value>
+    </property>
+
+    <property>
+        <name>dfs.nameservices</name>
+        <value>plsm</value>
+    </property>
+
+    <property>
+        <name>dfs.cluster.administrators</name>
+        <value> hadoop</value>
+    </property>
+
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:///var/lib/hadoop/hdfs/name/</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:///var/lib/hadoop/hdfs/data/</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.address</name>
+        <value>0.0.0.0:910</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.http.address</name>
+        <value>0.0.0.0:975</value>
+    </property>
+
+    <property>
+        <name>dfs.hosts.exclude</name>
+        <value>/etc/hadoop/dfs.exclude</value>
+    </property>
+
+    <property>
+        <name>dfs.http.policy</name>
+        <value>HTTP_ONLY</value>
+    </property>
+
+    <property>
+        <name>dfs.encrypt.data.transfer</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.permissions</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.permissions.supergroup</name>
+        <value>hadoop</value>
+    </property>
+
+    <property>
+        <name>dfs.block.access.token.enable</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.du.reserved</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>dfs.client.read.shortcircuit</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.client.read.shortcircuit.streams.cache.size</name>
+        <value>4096</value>
+    </property>
+
+    <property>
+        <name>dfs.block.local-path-access.user</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.avoid.write.stale.datanode</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.avoid.read.stale.datanode</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.avoid.write.stale.datanode</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir.perm</name>
+        <value>700</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.handler.count</name>
+        <value>100</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.safemode.threshold-pct</name>
+        <value>1.0f</value>
+    </property>
+
+    <property>
+        <name>dfs.domain.socket.path</name>
+        <value>/run/hadoop/hdfs/dn_socket</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.kerberos.principal</name>
+        <value>nn/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.kerberos.principal</name>
+        <value>dn/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.kerberos.https.principal</name>
+        <value>host/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.kerberos.https.principal</name>
+        <value>host/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>dfs.nfs.kerberos.principal</name>
+        <value>hdfs@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+</configuration>
