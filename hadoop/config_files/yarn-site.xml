@@ -26,7 +26,7 @@
 
     <property>
         <name>yarn.resourcemanager.hostname</name>
-        <value>ck</value>
+        <value>ck.plsm.cs.nccu.edu.tw</value>
     </property>
 
     <property>
@@ -81,7 +81,7 @@
 
     <property>
         <name>yarn.log.server.url</name>
-        <value>ck:19888/jobhistory/logs</value>
+        <value>ck.plsm.cs.nccu.edu.tw:19888/jobhistory/logs</value>
     </property>
 
       <property>
@@ -166,7 +166,7 @@
 
       <property>
         <name>yarn.web-proxy.address</name>
-        <value>ck:62292</value>
+        <value>ck.plsm.cs.nccu.edu.tw:62292</value>
       </property>
 
 </configuration>

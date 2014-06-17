@@ -130,7 +130,7 @@
 
     <property>
         <name>dfs.namenode.handler.count</name>
-        <value>100</value>
+        <value>64</value>
     </property>
 
     <property>
