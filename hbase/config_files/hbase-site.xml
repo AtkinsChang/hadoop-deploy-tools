@@ -67,6 +67,11 @@
     </property>
 
     <property>
+        <name>hbase.rpc.protection</name>
+        <value>privacy</value>
+    </property>
+
+    <property>
         <name>hbase.security.authentication</name>
         <value>kerberos</value>
     </property>
@@ -111,4 +116,37 @@
         <value>hregion/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
 
+    <property>
+        <name>hbase.thrift.keytab.file</name>
+        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+    </property>
+
+    <property>
+        <name>hbase.thrift.kerberos.principal</name>
+        <value>HTTP/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>hbase.rest.keytab.file</name>
+        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+    </property>
+    <property>
+        <name>hbase.rest.kerberos.principal</name>
+        <value>HTTP/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>hbase.rest.authentication.type</name>
+        <value>kerberos</value>
+    </property>
+
+    <property>
+        <name>hbase.rest.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+    </property>
+
+    <property>
+        <name>hbase.rest.authentication.kerberos.keytab</name>
+        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+    </property>
 </configuration>
