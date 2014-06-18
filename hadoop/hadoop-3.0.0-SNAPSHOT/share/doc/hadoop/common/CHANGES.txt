@@ -420,6 +420,22 @@ Release 2.5.0 - UNRELEASED
     HADOOP-10376. Refactor refresh*Protocols into a single generic
     refreshConfigProtocol. (Chris Li via Arpit Agarwal)
 
+    HADOOP-6350. Documenting Hadoop metrics. (Akira Ajisaka via Arpit Agarwal)
+
+    HADOOP-10691. Improve the readability of 'hadoop fs -help'.
+    (Lei Xu via wang)
+
+    HADOOP-10688. Expose thread-level FileSystem StatisticsData (Sandy Ryza)
+
+    HADOOP-10657. Have RetryInvocationHandler log failover attempt at INFO
+    level. (Ming Ma via jing9)
+
+    HADOOP-10666. Remove Copyright /d/d/d/d Apache Software Foundation from
+    the source files license header. (Henry Saputra via wang)
+
+    HADOOP-10557. FsShell -cp -pa option for preserving extended ACLs.
+    (Akira Ajisaka via cnauroth)
+
   OPTIMIZATIONS
 
   BUG FIXES 
@@ -540,6 +556,18 @@ Release 2.5.0 - UNRELEASED
     HADOOP-10686. Writables are not always configured. 
     (Abraham Elmahrek via kasha)
 
+    HADOOP-10678. SecurityUtil has unnecessary synchronization on collection
+    used for only tests. (Benoy Antony via cnauroth)
+
+    HADOOP-10683. Users authenticated with KERBEROS are recorded as being
+    authenticated with SIMPLE. (Benoy Antony via cnauroth)
+
+    HADOOP-10702. KerberosAuthenticationHandler does not log the principal names
+    correctly. (Benoy Antony via cnauroth)
+
+    HADOOP-10699. Fix build native library on mac osx (Binglin Chang via
+    jlowe)
+
   BREAKDOWN OF HADOOP-10514 SUBTASKS AND RELATED JIRAS
 
     HADOOP-10520. Extended attributes definition and FileSystem APIs for
@@ -558,7 +586,10 @@ Release 2.5.0 - UNRELEASED
 
     HADOOP-10575. Small fixes for XAttrCommands and test. (Yi Liu via umamahesh)
 
-Release 2.4.1 - UNRELEASED
+    HADOOP-10561. Copy command with preserve option should handle Xattrs.
+    (Yi Liu via cnauroth)
+
+Release 2.4.1 - 2014-06-23 
 
   INCOMPATIBLE CHANGES
 
