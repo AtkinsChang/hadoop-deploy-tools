@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -27,6 +28,101 @@
     <property>
         <name>yarn.resourcemanager.hostname</name>
         <value>ck.plsm.cs.nccu.edu.tw</value>
+    </property>
+
+    <property>
+        <name>yarn.web-proxy.address</name>
+        <value>ck.plsm.cs.nccu.edu.tw:62292</value>
+    </property>
+
+    <property>
+        <name>yarn.log.server.url</name>
+        <value>ck.plsm.cs.nccu.edu.tw:19888/jobhistory/logs</value>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.log-aggregation.compression-type</name>
+        <value>gz</value>
+    </property>
+
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>-1</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>2048</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>512</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>2048</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>1024</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.command-opts</name>
+        <value>-Xmx820m</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.resource.cpu-vcores</name>
+        <value>4</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.minimum-allocation-vcores</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>yarn.scheduler.maximum-allocation-vcores</name>
+        <value>4</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>/var/lib/hadoop/yarn/nm-local-dir</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir</name>
+        <value>/system/hadoop/logs</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.health-checker.script.path</name>
+        <value>/etc/hadoop/health_check</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.health-checker.script.timeout-ms</name>
+        <value>60000</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.health-checker.interval-ms</name>
+        <value>135000</value>
     </property>
 
     <property>
@@ -60,86 +156,6 @@
     </property>
 
     <property>
-        <name>yarn.nodemanager.local-dirs</name>
-        <value>/var/lib/hadoop/yarn/nm-local-dir</value>
-    </property>
-
-    <property>
-        <name>yarn.nodemanager.health-checker.script.timeout-ms</name>
-        <value>60000</value>
-    </property>
-
-    <property>
-        <name>yarn.resourcemanager.webapp.address</name>
-        <value>0.0.0.0:8088</value>
-    </property>
-
-    <property>
-        <name>yarn.nodemanager.remote-app-log-dir</name>
-        <value>/hadoop/logs</value>
-    </property>
-
-    <property>
-        <name>yarn.log.server.url</name>
-        <value>ck.plsm.cs.nccu.edu.tw:19888/jobhistory/logs</value>
-    </property>
-
-      <property>
-        <name>yarn.scheduler.maximum-allocation-mb</name>
-        <value>2048</value>
-      </property>
-
-      <property>
-        <name>yarn.scheduler.minimum-allocation-mb</name>
-        <value>512</value>
-      </property>
-
-      <property>
-        <name>yarn.nodemanager.health-checker.interval-ms</name>
-        <value>135000</value>
-      </property>
-
-      <property>
-        <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>2048</value>
-      </property>
-
-      <property>
-        <name>yarn.app.mapreduce.am.resource.mb</name>
-        <value>1024</value>
-      </property>
-
-      <property>
-        <name>yarn.app.mapreduce.am.command-opts</name>
-        <value>-Xmx820m</value>
-      </property>
-
-    <property>
-        <name>yarn.resourcemanager.scheduler.class</name>
-        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
-    </property>
-
-    <property>
-        <name>yarn.nodemanager.log-aggregation.compression-type</name>
-        <value>gz</value>
-    </property>
-
-    <property>
-        <name>yarn.nodemanager.health-checker.script.path</name>
-        <value>/usr/hadoop/sbin/health_check</value>
-    </property>
-
-    <property>
-        <name>yarn.log-aggregation.retain-seconds</name>
-        <value>-1</value>
-    </property>
-
-    <property>
-        <name>yarn.log-aggregation-enable</name>
-        <value>true</value>
-    </property>
-
-    <property>
         <name>yarn.nodemanager.keytab</name>
         <value>/etc/hadoop/keytabs/nm.service.keytab</value>
     </property>
@@ -148,25 +164,5 @@
         <name>yarn.nodemanager.principal</name>
         <value>nm/_HOST@PLSM.CS.NCCU.EDU.TW</value>
     </property>
-
-      <property>
-        <name>yarn.nodemanager.resource.cpu-vcores</name>
-        <value>4</value>
-      </property>
-
-      <property>
-        <name>yarn.scheduler.minimum-allocation-vcores</name>
-        <value>1</value>
-      </property>
-
-      <property>
-        <name>yarn.scheduler.maximum-allocation-vcores</name>
-        <value>4</value>
-      </property>
-
-      <property>
-        <name>yarn.web-proxy.address</name>
-        <value>ck.plsm.cs.nccu.edu.tw:62292</value>
-      </property>
 
 </configuration>
