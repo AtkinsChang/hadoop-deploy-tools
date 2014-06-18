@@ -21,8 +21,8 @@ export YARN_CONF_DIR="${YARN_CONF_DIR:-$HADOOP_YARN_HOME/conf}"
 
 ################################################################################
 # some Java parameters
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle-amd64
 #export JAVA_HOME=/home/y/libexec/jdk1.6.0/
+export JAVA_HOME=${JAVA_HOME:-"/usr/lib/jvm/java-7-oracle-amd64"}
 #if [ "$JAVA_HOME" != "" ]; then
 #  #echo "run java in $JAVA_HOME"
 #  JAVA_HOME=$JAVA_HOME
@@ -35,7 +35,8 @@ export JAVA_HOME=/usr/lib/jvm/java-7-oracle-amd64
 #
 
 JAVA=$JAVA_HOME/bin/java
-JAVA_HEAP_MAX=-Xmx1000m 
+#JAVA_HEAP_MAX=-Xmx1000m
+JAVA_HEAP_MAX=-Xmx1024m
 
 # For setting YARN specific HEAP sizes please use this
 # Parameter and set appropriately

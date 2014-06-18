@@ -44,6 +44,16 @@
     </property>
 
     <property>
+        <name>ipc.client.connect.timeout</name>
+        <value>3000</value>
+    </property>
+
+    <property>
+        <name>ipc.client.connect.max.retries.on.timeouts</name>
+        <value>2</value>
+    </property>
+
+    <property>
         <name>hadoop.security.auth_to_local</name>
         <value>
             RULE:[2:$1@$0](jhs@PLSM.CS.NCCU.EDU.TW)s/.*/mapred/
@@ -51,7 +61,8 @@
             RULE:[2:$1@$0](HTTP@PLSM.CS.NCCU.EDU.TW)s/.*/hdfs/
             RULE:[2:$1@$0]([nr]m@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
             RULE:[2:$1@$0](wap@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
-            RULE:[2:$1@$0](hbase@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
+            RULE:[2:$1@$0](hmaster@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
+            RULE:[2:$1@$0](hregion@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
             DEFAULT</value>
     </property>
 
