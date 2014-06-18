@@ -93,7 +93,7 @@
 
     <property>
         <name>hbase.master.keytab.file</name>
-        <value>/etc/hadoop/keytabs/hbase.service.keytab</value>
+        <value>/etc/security/keytabs/hbase.service.keytab</value>
     </property>
 
     <property>
@@ -108,7 +108,7 @@
 
     <property>
         <name>hbase.regionserver.keytab.file</name>
-        <value>/etc/hadoop/keytabs/hbase.service.keytab</value>
+        <value>/etc/security/keytabs/hbase.service.keytab</value>
     </property>
 
     <property>
@@ -118,7 +118,7 @@
 
     <property>
         <name>hbase.thrift.keytab.file</name>
-        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+        <value>/etc/security/keytabs/spnego.service.keytab</value>
     </property>
 
     <property>
@@ -128,7 +128,7 @@
 
     <property>
         <name>hbase.rest.keytab.file</name>
-        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+        <value>/etc/security/keytabs/spnego.service.keytab</value>
     </property>
     <property>
         <name>hbase.rest.kerberos.principal</name>
@@ -147,6 +147,6 @@
 
     <property>
         <name>hbase.rest.authentication.kerberos.keytab</name>
-        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+        <value>/etc/security/keytabs/spnego.service.keytab</value>
     </property>
 </configuration>

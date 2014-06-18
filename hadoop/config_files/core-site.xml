@@ -78,7 +78,7 @@
 
     <property>
         <name>hadoop.http.authentication.kerberos.keytab</name>
-        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+        <value>/etc/security/keytabs/spnego.service.keytab</value>
     </property>
 
     <property>

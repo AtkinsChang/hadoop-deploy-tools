@@ -41,7 +41,7 @@
 
     <property>
         <name>yarn.web-proxy.keytab</name>
-        <value>/etc/hadoop/keytabs/rm.service.keytab</value>
+        <value>/etc/security/keytabs/rm.service.keytab</value>
     </property>
 
     <property>
@@ -51,7 +51,7 @@
 
     <property>
         <name>yarn.resourcemanager.keytab</name>
-        <value>/etc/hadoop/keytabs/rm.service.keytab</value>
+        <value>/etc/security/keytabs/rm.service.keytab</value>
     </property>
 
     <property>
@@ -141,7 +141,7 @@
 
     <property>
         <name>yarn.nodemanager.keytab</name>
-        <value>/etc/hadoop/keytabs/nm.service.keytab</value>
+        <value>/etc/security/keytabs/nm.service.keytab</value>
     </property>
 
     <property>

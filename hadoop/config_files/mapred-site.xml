@@ -130,7 +130,7 @@
 
     <property>
         <name>mapreduce.jobhistory.keytab</name>
-        <value>/etc/hadoop/keytabs/jhs.service.keytab</value>
+        <value>/etc/security/keytabs/jhs.service.keytab</value>
     </property>
 
     <property>

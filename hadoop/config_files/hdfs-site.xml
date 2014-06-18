@@ -165,7 +165,7 @@
 
     <property>
         <name>dfs.namenode.keytab.file</name>
-        <value>/etc/hadoop/keytabs/nn.service.keytab</value>
+        <value>/etc/security/keytabs/nn.service.keytab</value>
     </property>
 
     <property>
@@ -180,7 +180,7 @@
 
     <property>
         <name>dfs.datanode.keytab.file</name>
-        <value>/etc/hadoop/keytabs/dn.service.keytab</value>
+        <value>/etc/security/keytabs/dn.service.keytab</value>
     </property>
 
     <property>
@@ -195,7 +195,7 @@
 
     <property>
         <name>dfs.web.authentication.kerberos.keytab</name>
-        <value>/etc/hadoop/keytabs/spnego.service.keytab</value>
+        <value>/etc/security/keytabs/spnego.service.keytab</value>
     </property>
 
     <property>
@@ -205,7 +205,7 @@
 
     <property>
         <name>dfs.nfs.keytab.file</name>
-        <value>/etc/hadoop/keytabs/nfs.service.keytab</value>
+        <value>/etc/security/keytabs/nfs.service.keytab</value>
     </property>
 
     <property>
