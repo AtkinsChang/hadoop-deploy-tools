@@ -40,7 +40,7 @@
 
     <property>
         <name>hadoop.rpc.protection</name>
-        <value>privacy</value>
+        <value>authentication</value>
     </property>
 
     <property>
@@ -61,8 +61,7 @@
             RULE:[2:$1@$0](HTTP@PLSM.CS.NCCU.EDU.TW)s/.*/hdfs/
             RULE:[2:$1@$0]([nr]m@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
             RULE:[2:$1@$0](wap@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
-            RULE:[2:$1@$0](hmaster@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
-            RULE:[2:$1@$0](hregion@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
+            RULE:[2:$1@$0](hbase@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
             DEFAULT</value>
     </property>
 
@@ -88,12 +87,32 @@
 
     <property>
         <name>io.compression.codecs</name>
-        <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.BZip2Codec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec</value>
+        <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec,com.hadoop.compression.lzo.LzopCodec</value>
     </property>
 
     <property>
         <name>io.compression.codec.lzo.class</name>
         <value>com.hadoop.compression.lzo.LzoCodec</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hue.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hue.groups</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hive.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hive.groups</name>
+        <value>*</value>
     </property>
 
 </configuration>

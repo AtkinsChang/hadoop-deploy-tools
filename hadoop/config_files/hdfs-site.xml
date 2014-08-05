@@ -25,7 +25,7 @@
 
     <property>
         <name>dfs.replication</name>
-        <value>3</value>
+        <value>2</value>
     </property>
 
     <property>
@@ -80,12 +80,12 @@
 
     <property>
         <name>dfs.client.socket-timeout</name>
-        <value>10000</value>
+        <value>600000</value>
     </property>
 
     <property>
         <name>dfs.datanode.socket.write.timeout</name>
-        <value>10000</value>
+        <value>600000</value>
     </property>
 
     <property>
@@ -95,7 +95,7 @@
 
     <property>
         <name>dfs.datanode.max.transfer.threads</name>
-        <value>4096</value>
+        <value>8192</value>
     </property>
 
     <property>
@@ -155,7 +155,7 @@
 
     <property>
         <name>dfs.encrypt.data.transfer</name>
-        <value>true</value>
+        <value>flase</value>
     </property>
 
     <property>

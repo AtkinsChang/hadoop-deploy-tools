@@ -78,7 +78,7 @@ deploy() {
 	cp -Rf $HADOOP_LAYOUT_PATH/hadoop-layout.sh $HADOOP_HOME/libexec
 
 	# sbin
-	rm -rf $ROOT/bin/*.cmd
+	rm -rf $ROOT/sbin/*.cmd
 	cp -Rf $ROOT/sbin $HADOOP_HOME/
 
 	# share

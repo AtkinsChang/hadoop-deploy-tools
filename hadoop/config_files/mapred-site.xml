@@ -25,7 +25,7 @@
 
     <property>
         <name>mapreduce.job.queuename</name>
-        <value>plsm2</value>
+        <value>plsm1</value>
     </property>
 
     <property>
@@ -61,6 +61,31 @@
     <property>
         <name>mapreduce.map.output.compress</name>
         <value>true</value>
+    </property>
+
+    <property>
+        <name>mapred.map.output.compress.codec</name>  
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+
+    <property>
+        <name>mapreduce.output.fileoutputformat.compress</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>mapreduce.output.fileoutputformat.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+
+    <property>
+        <name>mapreduce.output.fileoutputformat.compress.type</name>
+        <value>BLOCK</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.shuffle.parallelcopies</name>
+        <value>10</value>
     </property>
 
     <property>
