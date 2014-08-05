@@ -35,19 +35,24 @@
 <span class="sourceLineNo">027</span>@InterfaceAudience.Public<a name="line.27"></a>
 <span class="sourceLineNo">028</span>@InterfaceStability.Evolving<a name="line.28"></a>
 <span class="sourceLineNo">029</span>public interface Syncable {<a name="line.29"></a>
-<span class="sourceLineNo">030</span>  <a name="line.30"></a>
-<span class="sourceLineNo">031</span>  /** Flush out the data in client's user buffer. After the return of<a name="line.31"></a>
-<span class="sourceLineNo">032</span>   * this call, new readers will see the data.<a name="line.32"></a>
-<span class="sourceLineNo">033</span>   * @throws IOException if any error occurs<a name="line.33"></a>
-<span class="sourceLineNo">034</span>   */<a name="line.34"></a>
-<span class="sourceLineNo">035</span>  public void hflush() throws IOException;<a name="line.35"></a>
-<span class="sourceLineNo">036</span>  <a name="line.36"></a>
-<span class="sourceLineNo">037</span>  /** Similar to posix fsync, flush out the data in client's user buffer <a name="line.37"></a>
-<span class="sourceLineNo">038</span>   * all the way to the disk device (but the disk may have it in its cache).<a name="line.38"></a>
-<span class="sourceLineNo">039</span>   * @throws IOException if error occurs<a name="line.39"></a>
-<span class="sourceLineNo">040</span>   */<a name="line.40"></a>
-<span class="sourceLineNo">041</span>  public void hsync() throws IOException;<a name="line.41"></a>
-<span class="sourceLineNo">042</span>}<a name="line.42"></a>
+<span class="sourceLineNo">030</span>  /**<a name="line.30"></a>
+<span class="sourceLineNo">031</span>   * @deprecated As of HADOOP 0.21.0, replaced by hflush<a name="line.31"></a>
+<span class="sourceLineNo">032</span>   * @see #hflush()<a name="line.32"></a>
+<span class="sourceLineNo">033</span>   */<a name="line.33"></a>
+<span class="sourceLineNo">034</span>  @Deprecated  public void sync() throws IOException;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>  <a name="line.35"></a>
+<span class="sourceLineNo">036</span>  /** Flush out the data in client's user buffer. After the return of<a name="line.36"></a>
+<span class="sourceLineNo">037</span>   * this call, new readers will see the data.<a name="line.37"></a>
+<span class="sourceLineNo">038</span>   * @throws IOException if any error occurs<a name="line.38"></a>
+<span class="sourceLineNo">039</span>   */<a name="line.39"></a>
+<span class="sourceLineNo">040</span>  public void hflush() throws IOException;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>  <a name="line.41"></a>
+<span class="sourceLineNo">042</span>  /** Similar to posix fsync, flush out the data in client's user buffer <a name="line.42"></a>
+<span class="sourceLineNo">043</span>   * all the way to the disk device (but the disk may have it in its cache).<a name="line.43"></a>
+<span class="sourceLineNo">044</span>   * @throws IOException if error occurs<a name="line.44"></a>
+<span class="sourceLineNo">045</span>   */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>  public void hsync() throws IOException;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>}<a name="line.47"></a>
 
 
 

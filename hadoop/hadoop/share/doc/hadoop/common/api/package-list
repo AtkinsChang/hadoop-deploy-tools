@@ -1,7 +1,5 @@
 org.apache.hadoop
 org.apache.hadoop.conf
-org.apache.hadoop.crypto.key
-org.apache.hadoop.crypto.key.kms
 org.apache.hadoop.fs
 org.apache.hadoop.fs.ftp
 org.apache.hadoop.fs.permission
@@ -37,8 +35,12 @@ org.apache.hadoop.metrics2.source
 org.apache.hadoop.metrics2.util
 org.apache.hadoop.net
 org.apache.hadoop.net.unix
+org.apache.hadoop.record
+org.apache.hadoop.record.compiler
+org.apache.hadoop.record.compiler.ant
+org.apache.hadoop.record.compiler.generated
+org.apache.hadoop.record.meta
 org.apache.hadoop.security
-org.apache.hadoop.security.alias
 org.apache.hadoop.security.proto
 org.apache.hadoop.security.protocolPB
 org.apache.hadoop.security.ssl

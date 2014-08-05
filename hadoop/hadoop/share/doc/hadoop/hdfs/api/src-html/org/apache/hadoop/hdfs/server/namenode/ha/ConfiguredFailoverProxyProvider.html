@@ -42,8 +42,8 @@
 <span class="sourceLineNo">034</span>import org.apache.hadoop.hdfs.DFSUtil;<a name="line.34"></a>
 <span class="sourceLineNo">035</span>import org.apache.hadoop.hdfs.HAUtil;<a name="line.35"></a>
 <span class="sourceLineNo">036</span>import org.apache.hadoop.hdfs.NameNodeProxies;<a name="line.36"></a>
-<span class="sourceLineNo">037</span>import org.apache.hadoop.hdfs.server.namenode.ha.AbstractNNFailoverProxyProvider;<a name="line.37"></a>
-<span class="sourceLineNo">038</span>import org.apache.hadoop.hdfs.server.protocol.NamenodeProtocols;<a name="line.38"></a>
+<span class="sourceLineNo">037</span>import org.apache.hadoop.hdfs.server.protocol.NamenodeProtocols;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import org.apache.hadoop.io.retry.FailoverProxyProvider;<a name="line.38"></a>
 <span class="sourceLineNo">039</span>import org.apache.hadoop.ipc.RPC;<a name="line.39"></a>
 <span class="sourceLineNo">040</span>import org.apache.hadoop.security.UserGroupInformation;<a name="line.40"></a>
 <span class="sourceLineNo">041</span><a name="line.41"></a>
@@ -54,8 +54,8 @@
 <span class="sourceLineNo">046</span> * to connect to during fail-over. The first configured address is tried first,<a name="line.46"></a>
 <span class="sourceLineNo">047</span> * and on a fail-over event the other address is tried.<a name="line.47"></a>
 <span class="sourceLineNo">048</span> */<a name="line.48"></a>
-<span class="sourceLineNo">049</span>public class ConfiguredFailoverProxyProvider&lt;T&gt; extends<a name="line.49"></a>
-<span class="sourceLineNo">050</span>    AbstractNNFailoverProxyProvider&lt;T&gt; {<a name="line.50"></a>
+<span class="sourceLineNo">049</span>public class ConfiguredFailoverProxyProvider&lt;T&gt; implements<a name="line.49"></a>
+<span class="sourceLineNo">050</span>    FailoverProxyProvider&lt;T&gt; {<a name="line.50"></a>
 <span class="sourceLineNo">051</span>  <a name="line.51"></a>
 <span class="sourceLineNo">052</span>  private static final Log LOG =<a name="line.52"></a>
 <span class="sourceLineNo">053</span>      LogFactory.getLog(ConfiguredFailoverProxyProvider.class);<a name="line.53"></a>
@@ -136,7 +136,7 @@
 <span class="sourceLineNo">128</span>        throw new RuntimeException(e);<a name="line.128"></a>
 <span class="sourceLineNo">129</span>      }<a name="line.129"></a>
 <span class="sourceLineNo">130</span>    }<a name="line.130"></a>
-<span class="sourceLineNo">131</span>    return new ProxyInfo&lt;T&gt;(current.namenode, current.address.toString());<a name="line.131"></a>
+<span class="sourceLineNo">131</span>    return new ProxyInfo&lt;T&gt;((T)current.namenode, current.address.toString());<a name="line.131"></a>
 <span class="sourceLineNo">132</span>  }<a name="line.132"></a>
 <span class="sourceLineNo">133</span><a name="line.133"></a>
 <span class="sourceLineNo">134</span>  @Override<a name="line.134"></a>
@@ -173,15 +173,7 @@
 <span class="sourceLineNo">165</span>      }<a name="line.165"></a>
 <span class="sourceLineNo">166</span>    }<a name="line.166"></a>
 <span class="sourceLineNo">167</span>  }<a name="line.167"></a>
-<span class="sourceLineNo">168</span><a name="line.168"></a>
-<span class="sourceLineNo">169</span>  /**<a name="line.169"></a>
-<span class="sourceLineNo">170</span>   * Logical URI is required for this failover proxy provider.<a name="line.170"></a>
-<span class="sourceLineNo">171</span>   */<a name="line.171"></a>
-<span class="sourceLineNo">172</span>  @Override<a name="line.172"></a>
-<span class="sourceLineNo">173</span>  public boolean useLogicalURI() {<a name="line.173"></a>
-<span class="sourceLineNo">174</span>    return true;<a name="line.174"></a>
-<span class="sourceLineNo">175</span>  }<a name="line.175"></a>
-<span class="sourceLineNo">176</span>}<a name="line.176"></a>
+<span class="sourceLineNo">168</span>}<a name="line.168"></a>
 
 
 

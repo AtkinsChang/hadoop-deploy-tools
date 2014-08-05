@@ -79,8 +79,8 @@
 <span class="sourceLineNo">071</span>        GetOpParam.Op.GETFILECHECKSUM);<a name="line.71"></a>
 <span class="sourceLineNo">072</span>    <a name="line.72"></a>
 <span class="sourceLineNo">073</span>    static final List&lt;TemporaryRedirectOp&gt; values<a name="line.73"></a>
-<span class="sourceLineNo">074</span>        = Collections.unmodifiableList(Arrays.asList(CREATE, APPEND, OPEN,<a name="line.74"></a>
-<span class="sourceLineNo">075</span>                                       GETFILECHECKSUM));<a name="line.75"></a>
+<span class="sourceLineNo">074</span>        = Collections.unmodifiableList(Arrays.asList(<a name="line.74"></a>
+<span class="sourceLineNo">075</span>            new TemporaryRedirectOp[]{CREATE, APPEND, OPEN, GETFILECHECKSUM}));<a name="line.75"></a>
 <span class="sourceLineNo">076</span><a name="line.76"></a>
 <span class="sourceLineNo">077</span>    /** Get an object for the given op. */<a name="line.77"></a>
 <span class="sourceLineNo">078</span>    public static TemporaryRedirectOp valueOf(final Op op) {<a name="line.78"></a>
@@ -110,7 +110,7 @@
 <span class="sourceLineNo">102</span><a name="line.102"></a>
 <span class="sourceLineNo">103</span>    @Override<a name="line.103"></a>
 <span class="sourceLineNo">104</span>    public boolean getDoOutput() {<a name="line.104"></a>
-<span class="sourceLineNo">105</span>      return false;<a name="line.105"></a>
+<span class="sourceLineNo">105</span>      return op.getDoOutput();<a name="line.105"></a>
 <span class="sourceLineNo">106</span>    }<a name="line.106"></a>
 <span class="sourceLineNo">107</span><a name="line.107"></a>
 <span class="sourceLineNo">108</span>    @Override<a name="line.108"></a>

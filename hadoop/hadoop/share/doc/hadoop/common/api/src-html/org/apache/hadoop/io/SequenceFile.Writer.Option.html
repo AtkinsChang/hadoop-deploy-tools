@@ -1247,7 +1247,7 @@
 <span class="sourceLineNo">1239</span>    @Deprecated<a name="line.1239"></a>
 <span class="sourceLineNo">1240</span>    public void syncFs() throws IOException {<a name="line.1240"></a>
 <span class="sourceLineNo">1241</span>      if (out != null) {<a name="line.1241"></a>
-<span class="sourceLineNo">1242</span>        out.hflush();  // flush contents to file system<a name="line.1242"></a>
+<span class="sourceLineNo">1242</span>        out.sync();                               // flush contents to file system<a name="line.1242"></a>
 <span class="sourceLineNo">1243</span>      }<a name="line.1243"></a>
 <span class="sourceLineNo">1244</span>    }<a name="line.1244"></a>
 <span class="sourceLineNo">1245</span><a name="line.1245"></a>
@@ -2684,7 +2684,7 @@
 <span class="sourceLineNo">2676</span>    /** Sort and merge files containing the named classes. */<a name="line.2676"></a>
 <span class="sourceLineNo">2677</span>    public Sorter(FileSystem fs, Class&lt;? extends WritableComparable&gt; keyClass,<a name="line.2677"></a>
 <span class="sourceLineNo">2678</span>                  Class valClass, Configuration conf)  {<a name="line.2678"></a>
-<span class="sourceLineNo">2679</span>      this(fs, WritableComparator.get(keyClass, conf), keyClass, valClass, conf);<a name="line.2679"></a>
+<span class="sourceLineNo">2679</span>      this(fs, WritableComparator.get(keyClass), keyClass, valClass, conf);<a name="line.2679"></a>
 <span class="sourceLineNo">2680</span>    }<a name="line.2680"></a>
 <span class="sourceLineNo">2681</span><a name="line.2681"></a>
 <span class="sourceLineNo">2682</span>    /** Sort and merge using an arbitrary {@link RawComparator}. */<a name="line.2682"></a>

@@ -5,7 +5,7 @@
 <td>name</td><td>value</td><td>description</td>
 </tr>
 <tr>
-<td><a name="hadoop.common.configuration.version">hadoop.common.configuration.version</a></td><td>3.0.0</td><td>version of this configuration file</td>
+<td><a name="hadoop.common.configuration.version">hadoop.common.configuration.version</a></td><td>0.23.0</td><td>version of this configuration file</td>
 </tr>
 <tr>
 <td><a name="hadoop.tmp.dir">hadoop.tmp.dir</a></td><td>/tmp/hadoop-${user.name}</td><td>A base for other temporary directories.</td>
@@ -52,17 +52,6 @@
     containing the user-&gt;group mapping. When this duration has expired,
     then the implementation of the group mapping provider is invoked to get
     the groups of the user and then cached back.
-  </td>
-</tr>
-<tr>
-<td><a name="hadoop.security.groups.negative-cache.secs">hadoop.security.groups.negative-cache.secs</a></td><td>30</td><td>
-    Expiration time for entries in the the negative user-to-group mapping
-    caching, in seconds. This is useful when invalid users are retrying
-    frequently. It is suggested to set a small value for this expiration, since
-    a transient error in group lookup could temporarily lock out a legitimate
-    user.
-
-    Set this to zero or negative value to disable negative user-to-group caching.
   </td>
 </tr>
 <tr>
@@ -205,11 +194,6 @@
   </td>
 </tr>
 <tr>
-<td><a name="hadoop.kerberos.min.seconds.before.relogin">hadoop.kerberos.min.seconds.before.relogin</a></td><td>60</td><td>The minimum time between relogin attempts for Kerberos, in
-    seconds.
-    </td>
-</tr>
-<tr>
 <td><a name="hadoop.security.auth_to_local">hadoop.security.auth_to_local</a></td><td></td><td>Maps kerberos principals to local user names</td>
 </tr>
 <tr>
@@ -304,9 +288,6 @@
 <td><a name="fs.AbstractFileSystem.file.impl">fs.AbstractFileSystem.file.impl</a></td><td>org.apache.hadoop.fs.local.LocalFs</td><td>The AbstractFileSystem for file: uris.</td>
 </tr>
 <tr>
-<td><a name="fs.AbstractFileSystem.har.impl">fs.AbstractFileSystem.har.impl</a></td><td>org.apache.hadoop.fs.HarFs</td><td>The AbstractFileSystem for har: uris.</td>
-</tr>
-<tr>
 <td><a name="fs.AbstractFileSystem.hdfs.impl">fs.AbstractFileSystem.hdfs.impl</a></td><td>org.apache.hadoop.fs.Hdfs</td><td>The FileSystem for hdfs: uris.</td>
 </tr>
 <tr>
@@ -373,11 +354,6 @@
 <tr>
 <td><a name="fs.s3n.multipart.copy.block.size">fs.s3n.multipart.copy.block.size</a></td><td>5368709120</td><td>The block size for multipart copy in native S3 filesystem.
   Default size is 5GB.
-  </td>
-</tr>
-<tr>
-<td><a name="fs.s3n.server-side-encryption-algorithm">fs.s3n.server-side-encryption-algorithm</a></td><td></td><td>Specify a server-side encryption algorithm for S3.
-  The default is NULL, and the only other currently allowable value is AES256.
   </td>
 </tr>
 <tr>
@@ -454,11 +430,15 @@
   </td>
 </tr>
 <tr>
-<td><a name="hadoop.security.impersonation.provider.class">hadoop.security.impersonation.provider.class</a></td><td></td><td>A class which implements ImpersonationProvider interface, used to 
-       authorize whether one user can impersonate a specific user. 
-       If not specified, the DefaultImpersonationProvider will be used. 
-       If a class is specified, then that class will be used to determine 
-       the impersonation capability.
+<td><a name="ipc.server.tcpnodelay">ipc.server.tcpnodelay</a></td><td>false</td><td>Turn on/off Nagle's algorithm for the TCP socket connection on 
+  the server. Setting to true disables the algorithm and may decrease latency
+  with a cost of more/smaller packets. 
+  </td>
+</tr>
+<tr>
+<td><a name="ipc.client.tcpnodelay">ipc.client.tcpnodelay</a></td><td>false</td><td>Turn on/off Nagle's algorithm for the TCP socket connection on 
+  the client. Setting to true disables the algorithm and may decrease latency
+  with a cost of more/smaller packets. 
   </td>
 </tr>
 <tr>
@@ -667,6 +647,13 @@
   </td>
 </tr>
 <tr>
+<td><a name="hadoop.http.staticuser.user">hadoop.http.staticuser.user</a></td><td>dr.who</td><td>
+    The user name to filter as, on static web filters
+    while rendering content. An example use is the HDFS
+    web UI (user to be used for browsing files).
+  </td>
+</tr>
+<tr>
 <td><a name="ha.zookeeper.quorum">ha.zookeeper.quorum</a></td><td></td><td>
     A list of ZooKeeper server addresses, separated by commas, that are
     to be used by the ZKFailoverController in automatic failover.
@@ -710,13 +697,6 @@
     If the auths contain secrets, you may instead specify a
     path to a file, prefixed with the '@' symbol, and the value of
     this configuration will be loaded from within.
-  </td>
-</tr>
-<tr>
-<td><a name="hadoop.http.staticuser.user">hadoop.http.staticuser.user</a></td><td>dr.who</td><td>
-    The user name to filter as, on static web filters
-    while rendering content. An example use is the HDFS
-    web UI (user to be used for browsing files).
   </td>
 </tr>
 <tr>
@@ -825,15 +805,13 @@
   </td>
 </tr>
 <tr>
-<td><a name="nfs.exports.allowed.hosts">nfs.exports.allowed.hosts</a></td><td>* rw</td><td>
-    By default, the export can be mounted by any client. The value string 
-    contains machine name and access privilege, separated by whitespace 
-    characters. The machine name format can be a single host, a Java regular 
-    expression, or an IPv4 address. The access privilege uses rw or ro to 
-    specify read/write or read-only access of the machines to exports. If the 
-    access privilege is not provided, the default is read-only. Entries are separated by ";".
-    For example: "192.168.0.0/22 rw ; host.*\.example\.com ; host1.test.org ro;".
-    Only the NFS gateway needs to restart after this property is updated. 
+<td><a name="nfs3.server.port">nfs3.server.port</a></td><td>2049</td><td>
+      Specify the port number used by Hadoop NFS.
+  </td>
+</tr>
+<tr>
+<td><a name="nfs3.mountd.port">nfs3.mountd.port</a></td><td>4242</td><td>
+      Specify the port number used by Hadoop mount daemon.
   </td>
 </tr>
 <tr>
@@ -861,32 +839,6 @@
     describe the 50/75/90/95/99th percentile latency for rpc queue/processing
     time. The metrics are outputted if rpc.metrics.quantile.enable is set to
     true.
-  </td>
-</tr>
-<tr>
-<td><a name="fs.har.impl.disable.cache">fs.har.impl.disable.cache</a></td><td>true</td><td>Don't cache 'har' filesystem instances.</td>
-</tr>
-<tr>
-<td><a name="hadoop.security.kms.client.encrypted.key.cache.size">hadoop.security.kms.client.encrypted.key.cache.size</a></td><td>500</td><td>
-    Size of the EncryptedKeyVersion cache Queue for each key
-  </td>
-</tr>
-<tr>
-<td><a name="hadoop.security.kms.client.encrypted.key.cache.low-watermark">hadoop.security.kms.client.encrypted.key.cache.low-watermark</a></td><td>0.3f</td><td>
-    If size of the EncryptedKeyVersion cache Queue falls below the
-    low watermark, this cache queue will be scheduled for a refill
-  </td>
-</tr>
-<tr>
-<td><a name="hadoop.security.kms.client.encrypted.key.cache.num.refill.threads">hadoop.security.kms.client.encrypted.key.cache.num.refill.threads</a></td><td>2</td><td>
-    Number of threads to use for refilling depleted EncryptedKeyVersion
-    cache Queues
-  </td>
-</tr>
-<tr>
-<td><a name="%22hadoop.security.kms.client.encrypted.key.cache.expiry">"hadoop.security.kms.client.encrypted.key.cache.expiry</a></td><td>43200000</td><td>
-    Cache expiry time for a Key, after which the cache Queue for this
-    key will be dropped. Default = 12hrs
   </td>
 </tr>
 </table>

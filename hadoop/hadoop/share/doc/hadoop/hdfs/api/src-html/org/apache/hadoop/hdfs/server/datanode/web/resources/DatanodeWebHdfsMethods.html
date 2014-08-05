@@ -82,62 +82,62 @@
 <span class="sourceLineNo">074</span>import org.apache.hadoop.hdfs.web.resources.ReplicationParam;<a name="line.74"></a>
 <span class="sourceLineNo">075</span>import org.apache.hadoop.hdfs.web.resources.UriFsPathParam;<a name="line.75"></a>
 <span class="sourceLineNo">076</span>import org.apache.hadoop.io.IOUtils;<a name="line.76"></a>
-<span class="sourceLineNo">077</span>import org.apache.hadoop.security.SecurityUtil;<a name="line.77"></a>
-<span class="sourceLineNo">078</span>import org.apache.hadoop.security.UserGroupInformation;<a name="line.78"></a>
-<span class="sourceLineNo">079</span>import org.apache.hadoop.security.token.Token;<a name="line.79"></a>
-<span class="sourceLineNo">080</span><a name="line.80"></a>
-<span class="sourceLineNo">081</span>import com.sun.jersey.spi.container.ResourceFilters;<a name="line.81"></a>
-<span class="sourceLineNo">082</span><a name="line.82"></a>
-<span class="sourceLineNo">083</span>/** Web-hdfs DataNode implementation. */<a name="line.83"></a>
-<span class="sourceLineNo">084</span>@Path("")<a name="line.84"></a>
-<span class="sourceLineNo">085</span>@ResourceFilters(ParamFilter.class)<a name="line.85"></a>
-<span class="sourceLineNo">086</span>public class DatanodeWebHdfsMethods {<a name="line.86"></a>
-<span class="sourceLineNo">087</span>  public static final Log LOG = LogFactory.getLog(DatanodeWebHdfsMethods.class);<a name="line.87"></a>
-<span class="sourceLineNo">088</span><a name="line.88"></a>
-<span class="sourceLineNo">089</span>  private static final UriFsPathParam ROOT = new UriFsPathParam("");<a name="line.89"></a>
-<span class="sourceLineNo">090</span><a name="line.90"></a>
-<span class="sourceLineNo">091</span>  private @Context ServletContext context;<a name="line.91"></a>
-<span class="sourceLineNo">092</span>  private @Context HttpServletRequest request;<a name="line.92"></a>
-<span class="sourceLineNo">093</span>  private @Context HttpServletResponse response;<a name="line.93"></a>
-<span class="sourceLineNo">094</span><a name="line.94"></a>
-<span class="sourceLineNo">095</span>  private void init(final UserGroupInformation ugi,<a name="line.95"></a>
-<span class="sourceLineNo">096</span>      final DelegationParam delegation, final String nnId,<a name="line.96"></a>
-<span class="sourceLineNo">097</span>      final UriFsPathParam path, final HttpOpParam&lt;?&gt; op,<a name="line.97"></a>
-<span class="sourceLineNo">098</span>      final Param&lt;?, ?&gt;... parameters) throws IOException {<a name="line.98"></a>
-<span class="sourceLineNo">099</span>    if (LOG.isTraceEnabled()) {<a name="line.99"></a>
-<span class="sourceLineNo">100</span>      LOG.trace("HTTP " + op.getValue().getType() + ": " + op + ", " + path<a name="line.100"></a>
-<span class="sourceLineNo">101</span>          + ", ugi=" + ugi + Param.toSortedString(", ", parameters));<a name="line.101"></a>
-<span class="sourceLineNo">102</span>    }<a name="line.102"></a>
-<span class="sourceLineNo">103</span>    if (nnId == null) {<a name="line.103"></a>
-<span class="sourceLineNo">104</span>      throw new IllegalArgumentException(NamenodeAddressParam.NAME<a name="line.104"></a>
-<span class="sourceLineNo">105</span>          + " is not specified.");<a name="line.105"></a>
-<span class="sourceLineNo">106</span>    }<a name="line.106"></a>
-<span class="sourceLineNo">107</span><a name="line.107"></a>
-<span class="sourceLineNo">108</span>    //clear content type<a name="line.108"></a>
-<span class="sourceLineNo">109</span>    response.setContentType(null);<a name="line.109"></a>
-<span class="sourceLineNo">110</span>    <a name="line.110"></a>
-<span class="sourceLineNo">111</span>    if (UserGroupInformation.isSecurityEnabled()) {<a name="line.111"></a>
-<span class="sourceLineNo">112</span>      //add a token for RPC.<a name="line.112"></a>
-<span class="sourceLineNo">113</span>      final Token&lt;DelegationTokenIdentifier&gt; token = deserializeToken<a name="line.113"></a>
-<span class="sourceLineNo">114</span>              (delegation.getValue(), nnId);<a name="line.114"></a>
-<span class="sourceLineNo">115</span>      ugi.addToken(token);<a name="line.115"></a>
-<span class="sourceLineNo">116</span>    }<a name="line.116"></a>
-<span class="sourceLineNo">117</span>  }<a name="line.117"></a>
-<span class="sourceLineNo">118</span><a name="line.118"></a>
-<span class="sourceLineNo">119</span>  @VisibleForTesting<a name="line.119"></a>
-<span class="sourceLineNo">120</span>  Token&lt;DelegationTokenIdentifier&gt; deserializeToken<a name="line.120"></a>
-<span class="sourceLineNo">121</span>          (String delegation,String nnId) throws IOException {<a name="line.121"></a>
-<span class="sourceLineNo">122</span>    final DataNode datanode = (DataNode) context.getAttribute("datanode");<a name="line.122"></a>
-<span class="sourceLineNo">123</span>    final Configuration conf = datanode.getConf();<a name="line.123"></a>
-<span class="sourceLineNo">124</span>    final Token&lt;DelegationTokenIdentifier&gt; token = new<a name="line.124"></a>
-<span class="sourceLineNo">125</span>            Token&lt;DelegationTokenIdentifier&gt;();<a name="line.125"></a>
-<span class="sourceLineNo">126</span>    token.decodeFromUrlString(delegation);<a name="line.126"></a>
-<span class="sourceLineNo">127</span>    URI nnUri = URI.create(HdfsConstants.HDFS_URI_SCHEME +<a name="line.127"></a>
-<span class="sourceLineNo">128</span>            "://" + nnId);<a name="line.128"></a>
-<span class="sourceLineNo">129</span>    boolean isLogical = HAUtil.isLogicalUri(conf, nnUri);<a name="line.129"></a>
-<span class="sourceLineNo">130</span>    if (isLogical) {<a name="line.130"></a>
-<span class="sourceLineNo">131</span>      token.setService(HAUtil.buildTokenServiceForLogicalUri(nnUri,<a name="line.131"></a>
-<span class="sourceLineNo">132</span>          HdfsConstants.HDFS_URI_SCHEME));<a name="line.132"></a>
+<span class="sourceLineNo">077</span>import org.apache.hadoop.io.Text;<a name="line.77"></a>
+<span class="sourceLineNo">078</span>import org.apache.hadoop.security.SecurityUtil;<a name="line.78"></a>
+<span class="sourceLineNo">079</span>import org.apache.hadoop.security.UserGroupInformation;<a name="line.79"></a>
+<span class="sourceLineNo">080</span>import org.apache.hadoop.security.token.Token;<a name="line.80"></a>
+<span class="sourceLineNo">081</span><a name="line.81"></a>
+<span class="sourceLineNo">082</span>import com.sun.jersey.spi.container.ResourceFilters;<a name="line.82"></a>
+<span class="sourceLineNo">083</span><a name="line.83"></a>
+<span class="sourceLineNo">084</span>/** Web-hdfs DataNode implementation. */<a name="line.84"></a>
+<span class="sourceLineNo">085</span>@Path("")<a name="line.85"></a>
+<span class="sourceLineNo">086</span>@ResourceFilters(ParamFilter.class)<a name="line.86"></a>
+<span class="sourceLineNo">087</span>public class DatanodeWebHdfsMethods {<a name="line.87"></a>
+<span class="sourceLineNo">088</span>  public static final Log LOG = LogFactory.getLog(DatanodeWebHdfsMethods.class);<a name="line.88"></a>
+<span class="sourceLineNo">089</span><a name="line.89"></a>
+<span class="sourceLineNo">090</span>  private static final UriFsPathParam ROOT = new UriFsPathParam("");<a name="line.90"></a>
+<span class="sourceLineNo">091</span><a name="line.91"></a>
+<span class="sourceLineNo">092</span>  private @Context ServletContext context;<a name="line.92"></a>
+<span class="sourceLineNo">093</span>  private @Context HttpServletRequest request;<a name="line.93"></a>
+<span class="sourceLineNo">094</span>  private @Context HttpServletResponse response;<a name="line.94"></a>
+<span class="sourceLineNo">095</span><a name="line.95"></a>
+<span class="sourceLineNo">096</span>  private void init(final UserGroupInformation ugi,<a name="line.96"></a>
+<span class="sourceLineNo">097</span>      final DelegationParam delegation, final String nnId,<a name="line.97"></a>
+<span class="sourceLineNo">098</span>      final UriFsPathParam path, final HttpOpParam&lt;?&gt; op,<a name="line.98"></a>
+<span class="sourceLineNo">099</span>      final Param&lt;?, ?&gt;... parameters) throws IOException {<a name="line.99"></a>
+<span class="sourceLineNo">100</span>    if (LOG.isTraceEnabled()) {<a name="line.100"></a>
+<span class="sourceLineNo">101</span>      LOG.trace("HTTP " + op.getValue().getType() + ": " + op + ", " + path<a name="line.101"></a>
+<span class="sourceLineNo">102</span>          + ", ugi=" + ugi + Param.toSortedString(", ", parameters));<a name="line.102"></a>
+<span class="sourceLineNo">103</span>    }<a name="line.103"></a>
+<span class="sourceLineNo">104</span>    if (nnId == null) {<a name="line.104"></a>
+<span class="sourceLineNo">105</span>      throw new IllegalArgumentException(NamenodeAddressParam.NAME<a name="line.105"></a>
+<span class="sourceLineNo">106</span>          + " is not specified.");<a name="line.106"></a>
+<span class="sourceLineNo">107</span>    }<a name="line.107"></a>
+<span class="sourceLineNo">108</span><a name="line.108"></a>
+<span class="sourceLineNo">109</span>    //clear content type<a name="line.109"></a>
+<span class="sourceLineNo">110</span>    response.setContentType(null);<a name="line.110"></a>
+<span class="sourceLineNo">111</span>    <a name="line.111"></a>
+<span class="sourceLineNo">112</span>    if (UserGroupInformation.isSecurityEnabled()) {<a name="line.112"></a>
+<span class="sourceLineNo">113</span>      //add a token for RPC.<a name="line.113"></a>
+<span class="sourceLineNo">114</span>      final Token&lt;DelegationTokenIdentifier&gt; token = deserializeToken<a name="line.114"></a>
+<span class="sourceLineNo">115</span>              (delegation.getValue(), nnId);<a name="line.115"></a>
+<span class="sourceLineNo">116</span>      ugi.addToken(token);<a name="line.116"></a>
+<span class="sourceLineNo">117</span>    }<a name="line.117"></a>
+<span class="sourceLineNo">118</span>  }<a name="line.118"></a>
+<span class="sourceLineNo">119</span><a name="line.119"></a>
+<span class="sourceLineNo">120</span>  @VisibleForTesting<a name="line.120"></a>
+<span class="sourceLineNo">121</span>  Token&lt;DelegationTokenIdentifier&gt; deserializeToken<a name="line.121"></a>
+<span class="sourceLineNo">122</span>          (String delegation,String nnId) throws IOException {<a name="line.122"></a>
+<span class="sourceLineNo">123</span>    final DataNode datanode = (DataNode) context.getAttribute("datanode");<a name="line.123"></a>
+<span class="sourceLineNo">124</span>    final Configuration conf = datanode.getConf();<a name="line.124"></a>
+<span class="sourceLineNo">125</span>    final Token&lt;DelegationTokenIdentifier&gt; token = new<a name="line.125"></a>
+<span class="sourceLineNo">126</span>            Token&lt;DelegationTokenIdentifier&gt;();<a name="line.126"></a>
+<span class="sourceLineNo">127</span>    token.decodeFromUrlString(delegation);<a name="line.127"></a>
+<span class="sourceLineNo">128</span>    URI nnUri = URI.create(HdfsConstants.HDFS_URI_SCHEME +<a name="line.128"></a>
+<span class="sourceLineNo">129</span>            "://" + nnId);<a name="line.129"></a>
+<span class="sourceLineNo">130</span>    boolean isHA = HAUtil.isLogicalUri(conf, nnUri);<a name="line.130"></a>
+<span class="sourceLineNo">131</span>    if (isHA) {<a name="line.131"></a>
+<span class="sourceLineNo">132</span>      token.setService(HAUtil.buildTokenServiceForLogicalUri(nnUri));<a name="line.132"></a>
 <span class="sourceLineNo">133</span>    } else {<a name="line.133"></a>
 <span class="sourceLineNo">134</span>      token.setService(SecurityUtil.buildTokenService(nnUri));<a name="line.134"></a>
 <span class="sourceLineNo">135</span>    }<a name="line.135"></a>
@@ -438,48 +438,40 @@
 <span class="sourceLineNo">430</span>        Math.min(length.getValue(), in.getVisibleLength() - offset.getValue()) :<a name="line.430"></a>
 <span class="sourceLineNo">431</span>        in.getVisibleLength() - offset.getValue();<a name="line.431"></a>
 <span class="sourceLineNo">432</span><a name="line.432"></a>
-<span class="sourceLineNo">433</span>      // jetty 6 reserves 12 bytes in the out buffer for chunked responses<a name="line.433"></a>
-<span class="sourceLineNo">434</span>      // (file length &gt; 2GB) which causes extremely poor performance when<a name="line.434"></a>
-<span class="sourceLineNo">435</span>      // 12 bytes of the output spill into another buffer which results<a name="line.435"></a>
-<span class="sourceLineNo">436</span>      // in a big and little write<a name="line.436"></a>
-<span class="sourceLineNo">437</span>      int outBufferSize = response.getBufferSize();<a name="line.437"></a>
-<span class="sourceLineNo">438</span>      if (n &gt; Integer.MAX_VALUE) {<a name="line.438"></a>
-<span class="sourceLineNo">439</span>        outBufferSize -= 12;<a name="line.439"></a>
-<span class="sourceLineNo">440</span>      }<a name="line.440"></a>
-<span class="sourceLineNo">441</span>      /**<a name="line.441"></a>
-<span class="sourceLineNo">442</span>       * Allow the Web UI to perform an AJAX request to get the data.<a name="line.442"></a>
-<span class="sourceLineNo">443</span>       */<a name="line.443"></a>
-<span class="sourceLineNo">444</span>      return Response.ok(new OpenEntity(in, n, outBufferSize, dfsclient))<a name="line.444"></a>
-<span class="sourceLineNo">445</span>          .type(MediaType.APPLICATION_OCTET_STREAM)<a name="line.445"></a>
-<span class="sourceLineNo">446</span>          .header("Access-Control-Allow-Methods", "GET")<a name="line.446"></a>
-<span class="sourceLineNo">447</span>          .header("Access-Control-Allow-Origin", "*")<a name="line.447"></a>
-<span class="sourceLineNo">448</span>          .build();<a name="line.448"></a>
-<span class="sourceLineNo">449</span>    }<a name="line.449"></a>
-<span class="sourceLineNo">450</span>    case GETFILECHECKSUM:<a name="line.450"></a>
-<span class="sourceLineNo">451</span>    {<a name="line.451"></a>
-<span class="sourceLineNo">452</span>      MD5MD5CRC32FileChecksum checksum = null;<a name="line.452"></a>
-<span class="sourceLineNo">453</span>      DFSClient dfsclient = newDfsClient(nnId, conf);<a name="line.453"></a>
-<span class="sourceLineNo">454</span>      try {<a name="line.454"></a>
-<span class="sourceLineNo">455</span>        checksum = dfsclient.getFileChecksum(fullpath, Long.MAX_VALUE);<a name="line.455"></a>
-<span class="sourceLineNo">456</span>        dfsclient.close();<a name="line.456"></a>
-<span class="sourceLineNo">457</span>        dfsclient = null;<a name="line.457"></a>
-<span class="sourceLineNo">458</span>      } finally {<a name="line.458"></a>
-<span class="sourceLineNo">459</span>        IOUtils.cleanup(LOG, dfsclient);<a name="line.459"></a>
-<span class="sourceLineNo">460</span>      }<a name="line.460"></a>
-<span class="sourceLineNo">461</span>      final String js = JsonUtil.toJsonString(checksum);<a name="line.461"></a>
-<span class="sourceLineNo">462</span>      return Response.ok(js).type(MediaType.APPLICATION_JSON).build();<a name="line.462"></a>
-<span class="sourceLineNo">463</span>    }<a name="line.463"></a>
-<span class="sourceLineNo">464</span>    default:<a name="line.464"></a>
-<span class="sourceLineNo">465</span>      throw new UnsupportedOperationException(op + " is not supported");<a name="line.465"></a>
-<span class="sourceLineNo">466</span>    }<a name="line.466"></a>
-<span class="sourceLineNo">467</span>  }<a name="line.467"></a>
-<span class="sourceLineNo">468</span><a name="line.468"></a>
-<span class="sourceLineNo">469</span>  private static DFSClient newDfsClient(String nnId,<a name="line.469"></a>
-<span class="sourceLineNo">470</span>                                        Configuration conf) throws IOException {<a name="line.470"></a>
-<span class="sourceLineNo">471</span>    URI uri = URI.create(HdfsConstants.HDFS_URI_SCHEME + "://" + nnId);<a name="line.471"></a>
-<span class="sourceLineNo">472</span>    return new DFSClient(uri, conf);<a name="line.472"></a>
-<span class="sourceLineNo">473</span>  }<a name="line.473"></a>
-<span class="sourceLineNo">474</span>}<a name="line.474"></a>
+<span class="sourceLineNo">433</span>      /**<a name="line.433"></a>
+<span class="sourceLineNo">434</span>       * Allow the Web UI to perform an AJAX request to get the data.<a name="line.434"></a>
+<span class="sourceLineNo">435</span>       */<a name="line.435"></a>
+<span class="sourceLineNo">436</span>      return Response.ok(new OpenEntity(in, n, dfsclient))<a name="line.436"></a>
+<span class="sourceLineNo">437</span>          .type(MediaType.APPLICATION_OCTET_STREAM)<a name="line.437"></a>
+<span class="sourceLineNo">438</span>          .header("Access-Control-Allow-Methods", "GET")<a name="line.438"></a>
+<span class="sourceLineNo">439</span>          .header("Access-Control-Allow-Origin", "*")<a name="line.439"></a>
+<span class="sourceLineNo">440</span>          .build();<a name="line.440"></a>
+<span class="sourceLineNo">441</span>    }<a name="line.441"></a>
+<span class="sourceLineNo">442</span>    case GETFILECHECKSUM:<a name="line.442"></a>
+<span class="sourceLineNo">443</span>    {<a name="line.443"></a>
+<span class="sourceLineNo">444</span>      MD5MD5CRC32FileChecksum checksum = null;<a name="line.444"></a>
+<span class="sourceLineNo">445</span>      DFSClient dfsclient = newDfsClient(nnId, conf);<a name="line.445"></a>
+<span class="sourceLineNo">446</span>      try {<a name="line.446"></a>
+<span class="sourceLineNo">447</span>        checksum = dfsclient.getFileChecksum(fullpath);<a name="line.447"></a>
+<span class="sourceLineNo">448</span>        dfsclient.close();<a name="line.448"></a>
+<span class="sourceLineNo">449</span>        dfsclient = null;<a name="line.449"></a>
+<span class="sourceLineNo">450</span>      } finally {<a name="line.450"></a>
+<span class="sourceLineNo">451</span>        IOUtils.cleanup(LOG, dfsclient);<a name="line.451"></a>
+<span class="sourceLineNo">452</span>      }<a name="line.452"></a>
+<span class="sourceLineNo">453</span>      final String js = JsonUtil.toJsonString(checksum);<a name="line.453"></a>
+<span class="sourceLineNo">454</span>      return Response.ok(js).type(MediaType.APPLICATION_JSON).build();<a name="line.454"></a>
+<span class="sourceLineNo">455</span>    }<a name="line.455"></a>
+<span class="sourceLineNo">456</span>    default:<a name="line.456"></a>
+<span class="sourceLineNo">457</span>      throw new UnsupportedOperationException(op + " is not supported");<a name="line.457"></a>
+<span class="sourceLineNo">458</span>    }<a name="line.458"></a>
+<span class="sourceLineNo">459</span>  }<a name="line.459"></a>
+<span class="sourceLineNo">460</span><a name="line.460"></a>
+<span class="sourceLineNo">461</span>  private static DFSClient newDfsClient(String nnId,<a name="line.461"></a>
+<span class="sourceLineNo">462</span>                                        Configuration conf) throws IOException {<a name="line.462"></a>
+<span class="sourceLineNo">463</span>    URI uri = URI.create(HdfsConstants.HDFS_URI_SCHEME + "://" + nnId);<a name="line.463"></a>
+<span class="sourceLineNo">464</span>    return new DFSClient(uri, conf);<a name="line.464"></a>
+<span class="sourceLineNo">465</span>  }<a name="line.465"></a>
+<span class="sourceLineNo">466</span>}<a name="line.466"></a>
 
 
 

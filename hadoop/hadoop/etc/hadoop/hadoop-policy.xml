@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
+
+ Copyright 2011 The Apache Software Foundation
  
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -83,7 +85,7 @@
   </property>
 
   <property>
-    <name>security.refresh.user.mappings.protocol.acl</name>
+    <name>security.refresh.usertogroups.mappings.protocol.acl</name>
     <value>*</value>
     <description>ACL for RefreshUserMappingsProtocol. Used to refresh
     users mappings. The ACL is a comma-separated list of user and

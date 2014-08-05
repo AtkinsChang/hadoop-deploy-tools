@@ -115,14 +115,11 @@ call :updatepath %HADOOP_BIN_PATH%
   )
 
   if %hadoop-command% == classpath (
-    if not defined hadoop-command-arguments (
-      @rem No need to bother starting up a JVM for this simple case.
-      @echo %CLASSPATH%
-      exit /b
-    )
+    @echo %CLASSPATH%
+    goto :eof
   )
   
-  set corecommands=fs version jar checknative distcp daemonlog archive classpath
+  set corecommands=fs version jar checknative distcp daemonlog archive
   for %%i in ( %corecommands% ) do (
     if %hadoop-command% == %%i set corecommand=true  
   )
@@ -176,10 +173,6 @@ call :updatepath %HADOOP_BIN_PATH%
 :archive
   set CLASS=org.apache.hadoop.tools.HadoopArchives
   set CLASSPATH=%CLASSPATH%;%TOOL_PATH%
-  goto :eof
-
-:classpath
-  set CLASS=org.apache.hadoop.util.Classpath
   goto :eof
 
 :updatepath

@@ -71,18 +71,18 @@
 <span class="sourceLineNo">063</span>    public static final String NAME = "chmod";<a name="line.63"></a>
 <span class="sourceLineNo">064</span>    public static final String USAGE = "[-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...";<a name="line.64"></a>
 <span class="sourceLineNo">065</span>    public static final String DESCRIPTION =<a name="line.65"></a>
-<span class="sourceLineNo">066</span>      "Changes permissions of a file. " +<a name="line.66"></a>
-<span class="sourceLineNo">067</span>      "This works similar to the shell's chmod command with a few exceptions.\n" +<a name="line.67"></a>
-<span class="sourceLineNo">068</span>      "-R: modifies the files recursively. This is the only option" +<a name="line.68"></a>
-<span class="sourceLineNo">069</span>      " currently supported.\n" +<a name="line.69"></a>
-<span class="sourceLineNo">070</span>      "&lt;MODE&gt;: Mode is the same as mode used for the shell's command. " +<a name="line.70"></a>
-<span class="sourceLineNo">071</span>      "The only letters recognized are 'rwxXt', e.g. +t,a+r,g-w,+rwx,o=r.\n" +<a name="line.71"></a>
-<span class="sourceLineNo">072</span>      "&lt;OCTALMODE&gt;: Mode specifed in 3 or 4 digits. If 4 digits, the first " +<a name="line.72"></a>
-<span class="sourceLineNo">073</span>      "may be 1 or 0 to turn the sticky bit on or off, respectively.  Unlike " +<a name="line.73"></a>
-<span class="sourceLineNo">074</span>      "the shell command, it is not possible to specify only part of the " +<a name="line.74"></a>
-<span class="sourceLineNo">075</span>      "mode, e.g. 754 is same as u=rwx,g=rx,o=r.\n\n" +<a name="line.75"></a>
-<span class="sourceLineNo">076</span>      "If none of 'augo' is specified, 'a' is assumed and unlike the " +<a name="line.76"></a>
-<span class="sourceLineNo">077</span>      "shell command, no umask is applied.";<a name="line.77"></a>
+<span class="sourceLineNo">066</span>      "Changes permissions of a file.\n" +<a name="line.66"></a>
+<span class="sourceLineNo">067</span>      "\tThis works similar to shell's chmod with a few exceptions.\n\n" +<a name="line.67"></a>
+<span class="sourceLineNo">068</span>      "-R\tmodifies the files recursively. This is the only option\n" +<a name="line.68"></a>
+<span class="sourceLineNo">069</span>      "\tcurrently supported.\n\n" +<a name="line.69"></a>
+<span class="sourceLineNo">070</span>      "MODE\tMode is same as mode used for chmod shell command.\n" +<a name="line.70"></a>
+<span class="sourceLineNo">071</span>      "\tOnly letters recognized are 'rwxXt'. E.g. +t,a+r,g-w,+rwx,o=r\n\n" +<a name="line.71"></a>
+<span class="sourceLineNo">072</span>      "OCTALMODE Mode specifed in 3 or 4 digits. If 4 digits, the first may\n" +<a name="line.72"></a>
+<span class="sourceLineNo">073</span>      "be 1 or 0 to turn the sticky bit on or off, respectively.  Unlike " +<a name="line.73"></a>
+<span class="sourceLineNo">074</span>      "shell command, it is not possible to specify only part of the mode\n" +<a name="line.74"></a>
+<span class="sourceLineNo">075</span>      "\tE.g. 754 is same as u=rwx,g=rx,o=r\n\n" +<a name="line.75"></a>
+<span class="sourceLineNo">076</span>      "\tIf none of 'augo' is specified, 'a' is assumed and unlike\n" +<a name="line.76"></a>
+<span class="sourceLineNo">077</span>      "\tshell command, no umask is applied.";<a name="line.77"></a>
 <span class="sourceLineNo">078</span><a name="line.78"></a>
 <span class="sourceLineNo">079</span>    protected ChmodParser pp;<a name="line.79"></a>
 <span class="sourceLineNo">080</span><a name="line.80"></a>
@@ -129,18 +129,18 @@
 <span class="sourceLineNo">121</span>    public static final String NAME = "chown";<a name="line.121"></a>
 <span class="sourceLineNo">122</span>    public static final String USAGE = "[-R] [OWNER][:[GROUP]] PATH...";<a name="line.122"></a>
 <span class="sourceLineNo">123</span>    public static final String DESCRIPTION =<a name="line.123"></a>
-<span class="sourceLineNo">124</span>      "Changes owner and group of a file. " +<a name="line.124"></a>
-<span class="sourceLineNo">125</span>      "This is similar to the shell's chown command with a few exceptions.\n" +<a name="line.125"></a>
-<span class="sourceLineNo">126</span>      "-R: modifies the files recursively. This is the only option " +<a name="line.126"></a>
-<span class="sourceLineNo">127</span>      "currently supported.\n\n" +<a name="line.127"></a>
-<span class="sourceLineNo">128</span>      "If only the owner or group is specified, then only the owner or " +<a name="line.128"></a>
-<span class="sourceLineNo">129</span>      "group is modified. " +<a name="line.129"></a>
-<span class="sourceLineNo">130</span>      "The owner and group names may only consist of digits, alphabet, "+<a name="line.130"></a>
-<span class="sourceLineNo">131</span>      "and any of " + allowedChars + ". The names are case sensitive.\n\n" +<a name="line.131"></a>
-<span class="sourceLineNo">132</span>      "WARNING: Avoid using '.' to separate user name and group though " +<a name="line.132"></a>
-<span class="sourceLineNo">133</span>      "Linux allows it. If user names have dots in them and you are " +<a name="line.133"></a>
-<span class="sourceLineNo">134</span>      "using local file system, you might see surprising results since " +<a name="line.134"></a>
-<span class="sourceLineNo">135</span>      "the shell command 'chown' is used for local files.";<a name="line.135"></a>
+<span class="sourceLineNo">124</span>      "Changes owner and group of a file.\n" +<a name="line.124"></a>
+<span class="sourceLineNo">125</span>      "\tThis is similar to shell's chown with a few exceptions.\n\n" +<a name="line.125"></a>
+<span class="sourceLineNo">126</span>      "\t-R\tmodifies the files recursively. This is the only option\n" +<a name="line.126"></a>
+<span class="sourceLineNo">127</span>      "\tcurrently supported.\n\n" +<a name="line.127"></a>
+<span class="sourceLineNo">128</span>      "\tIf only owner or group is specified then only owner or\n" +<a name="line.128"></a>
+<span class="sourceLineNo">129</span>      "\tgroup is modified.\n\n" +<a name="line.129"></a>
+<span class="sourceLineNo">130</span>      "\tThe owner and group names may only consist of digits, alphabet,\n"+<a name="line.130"></a>
+<span class="sourceLineNo">131</span>      "\tand any of " + allowedChars + ". The names are case sensitive.\n\n" +<a name="line.131"></a>
+<span class="sourceLineNo">132</span>      "\tWARNING: Avoid using '.' to separate user name and group though\n" +<a name="line.132"></a>
+<span class="sourceLineNo">133</span>      "\tLinux allows it. If user names have dots in them and you are\n" +<a name="line.133"></a>
+<span class="sourceLineNo">134</span>      "\tusing local file system, you might see surprising results since\n" +<a name="line.134"></a>
+<span class="sourceLineNo">135</span>      "\tshell command 'chown' is used for local files.";<a name="line.135"></a>
 <span class="sourceLineNo">136</span><a name="line.136"></a>
 <span class="sourceLineNo">137</span>    ///allows only "allowedChars" above in names for owner and group<a name="line.137"></a>
 <span class="sourceLineNo">138</span>    static private final Pattern chownPattern = Pattern.compile(<a name="line.138"></a>

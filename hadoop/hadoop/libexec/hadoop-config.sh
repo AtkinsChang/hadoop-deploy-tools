@@ -78,10 +78,6 @@ fi
 
 export HADOOP_CONF_DIR="${HADOOP_CONF_DIR:-$HADOOP_PREFIX/$DEFAULT_CONF_DIR}"
 
-if [ -f "${HADOOP_CONF_DIR}/hadoop-env.sh" ]; then
-  . "${HADOOP_CONF_DIR}/hadoop-env.sh"
-fi
-
 # User can specify hostnames or a file where the hostnames are (not both)
 if [[ ( "$HADOOP_SLAVES" != '' ) && ( "$HADOOP_SLAVE_NAMES" != '' ) ]] ; then
   echo \
@@ -97,7 +93,7 @@ then
     if [ "--hosts" = "$1" ]
     then
         shift
-        export HADOOP_SLAVES="${HADOOP_CONF_DIR}/$1"
+        export HADOOP_SLAVES="${HADOOP_CONF_DIR}/$$1"
         shift
     elif [ "--hostnames" = "$1" ]
     then
@@ -114,6 +110,10 @@ if [[ ( "$HADOOP_SLAVES" != '' ) && ( "$HADOOP_SLAVE_NAMES" != '' ) ]] ; then
   echo \
     "Error: Please specify one of --hosts or --hostnames options and not both."
   exit 1
+fi
+
+if [ -f "${HADOOP_CONF_DIR}/hadoop-env.sh" ]; then
+  . "${HADOOP_CONF_DIR}/hadoop-env.sh"
 fi
 
 # check if net.ipv6.bindv6only is set to 1
@@ -149,6 +149,8 @@ if [[ -z $JAVA_HOME ]]; then
 fi
 
 JAVA=$JAVA_HOME/bin/java
+# some Java parameters
+JAVA_HEAP_MAX=-Xmx1000m 
 
 # check envvars which might override default args
 if [ "$HADOOP_HEAPSIZE" != "" ]; then
@@ -290,3 +292,4 @@ if [ "$HADOOP_CLASSPATH" != "" ]; then
     CLASSPATH=${CLASSPATH}:${HADOOP_CLASSPATH}
   fi
 fi
+

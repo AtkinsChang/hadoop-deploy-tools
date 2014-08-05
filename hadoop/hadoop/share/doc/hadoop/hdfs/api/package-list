@@ -4,7 +4,6 @@ org.apache.hadoop.hdfs.client
 org.apache.hadoop.hdfs.net
 org.apache.hadoop.hdfs.protocol
 org.apache.hadoop.hdfs.protocol.datatransfer
-org.apache.hadoop.hdfs.protocol.datatransfer.sasl
 org.apache.hadoop.hdfs.protocolPB
 org.apache.hadoop.hdfs.qjournal.client
 org.apache.hadoop.hdfs.qjournal.protocol
@@ -20,6 +19,7 @@ org.apache.hadoop.hdfs.server.datanode.fsdataset
 org.apache.hadoop.hdfs.server.datanode.fsdataset.impl
 org.apache.hadoop.hdfs.server.datanode.metrics
 org.apache.hadoop.hdfs.server.datanode.web.resources
+org.apache.hadoop.hdfs.server.journalservice
 org.apache.hadoop.hdfs.server.namenode
 org.apache.hadoop.hdfs.server.namenode.ha
 org.apache.hadoop.hdfs.server.namenode.ha.proto
@@ -27,7 +27,6 @@ org.apache.hadoop.hdfs.server.namenode.metrics
 org.apache.hadoop.hdfs.server.namenode.snapshot
 org.apache.hadoop.hdfs.server.namenode.web.resources
 org.apache.hadoop.hdfs.server.protocol
-org.apache.hadoop.hdfs.shortcircuit
 org.apache.hadoop.hdfs.tools
 org.apache.hadoop.hdfs.tools.offlineEditsViewer
 org.apache.hadoop.hdfs.tools.offlineImageViewer
