@@ -62,6 +62,7 @@
             RULE:[2:$1@$0]([nr]m@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
             RULE:[2:$1@$0](wap@PLSM.CS.NCCU.EDU.TW)s/.*/yarn/
             RULE:[2:$1@$0](hbase@PLSM.CS.NCCU.EDU.TW)s/.*/hbase/
+            RULE:[2:$1@$0](HTTP@PLSM.CS.NCCU.EDU.TW)s/.*/HTTP/
             DEFAULT</value>
     </property>
 
@@ -115,4 +116,12 @@
         <value>*</value>
     </property>
 
+  <property>
+    <name>hadoop.proxyuser.HTTP.hosts</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.HTTP.groups</name>
+    <value>*</value>
+  </property>
 </configuration>

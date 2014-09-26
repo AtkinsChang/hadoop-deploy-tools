@@ -43,7 +43,7 @@
 
   <property>
     <name>security.masterregion.protocol.acl</name>
-    <value>habse </value>
+    <value>hbase </value>
     <description>ACL for HMasterRegionInterface protocol implementations
     (for HRegionServers communicating with HMaster)
     The ACL is a comma-separated list of user and group names. The user and 

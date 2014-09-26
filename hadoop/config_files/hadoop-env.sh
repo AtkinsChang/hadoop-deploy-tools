@@ -33,6 +33,7 @@ export JAVA_HOME=${JAVA_HOME:-"/usr/lib/jvm/java-7-oracle-amd64"}
 
 export HADOOP_CONF_DIR=${HADOOP_CONF_DIR:-"/etc/hadoop"}
 
+export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/etc/tez/:/usr/lib/tez/*:/usr/lib/tez/lib/*
 # Extra Java CLASSPATH elements.  Automatically insert capacity-scheduler.
 for f in $HADOOP_HOME/contrib/capacity-scheduler/*.jar; do
   if [ "$HADOOP_CLASSPATH" ]; then

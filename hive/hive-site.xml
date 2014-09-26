@@ -1,0 +1,494 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+ <property>
+   <name>hive.cli.print.header</name>
+   <value>true</value>
+   <description>Whether to print the names of the columns in query output.</description>
+ </property>
+ 
+ <property>
+   <name>hive.cli.print.current.db</name>
+   <value>true</value>
+   <description>Whether to include the current database in the Hive prompt.</description>
+ </property>
+ 
+ <property>
+   <name>hive.exec.scratchdir</name>
+   <value>/system/hive/scratch/${user.name}</value>
+   <description>Scratch space for Hive jobs</description>
+ </property>
+
+  <property>
+    <name>fs.file.impl.disable.cache</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.auto.convert.join</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.auto.convert.join.noconditionaltask</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.auto.convert.sortmerge.join.noconditionaltask</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.auto.convert.join.noconditionaltask.size</name>
+    <value>1200000000</value>
+  </property>
+
+  <property>
+    <name>hive.auto.convert.sortmerge.join</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.abortedtxn.threshold</name>
+    <value>1000</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.check.interval</name>
+    <value>300</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.delta.num.threshold</name>
+    <value>10</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.delta.pct.threshold</name>
+    <value>0.1f</value>
+  </property>
+
+  <property>
+    <name>hive.compactor.initiator.on</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.compactor.worker.threads</name>
+    <value>0</value>
+  </property>
+  <property>
+    <name>hive.compactor.worker.timeout</name>
+    <value>86400</value>
+  </property>
+  <property>
+    <name>hive.compute.query.using.stats</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.enforce.bucketing</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.enforce.sorting</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.enforce.sortmergebucketmapjoin</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.exec.failure.hooks</name>
+    <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
+  </property>
+  <property>
+    <name>hive.exec.post.hooks</name>
+    <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
+  </property>
+  <property>
+    <name>hive.exec.pre.hooks</name>
+    <value>org.apache.hadoop.hive.ql.hooks.ATSHook</value>
+  </property>
+  <property>
+    <name>hive.execution.engine</name>
+    <value>tez</value>
+  </property>
+  <property>
+    <name>hive.limit.pushdown.memory.usage</name>
+    <value>0.04</value>
+  </property>
+  <property>
+    <name>hive.map.aggr</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.mapjoin.bucket.cache.size</name>
+    <value>10000</value>
+  </property>
+  <property>
+    <name>hive.mapred.reduce.tasks.speculative.execution</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.metastore.cache.pinobjtypes</name>
+    <value>Table,Database,Type,FieldSchema,Order</value>
+  </property>
+  <property>
+    <name>hive.metastore.client.socket.timeout</name>
+    <value>60</value>
+  </property> 
+ <property>
+   <name>hive.exec.local.scratchdir</name>
+   <value>/system/hive/tmp/${user.name}</value>
+   <description>Local scratch space for Hive jobs</description>
+ </property>
+  <property>
+    <name>hive.optimize.reducededuplication.min.reducer</name>
+    <value>4</value>
+  </property>
+  <property>
+    <name>hive.optimize.reducededuplication</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.orc.splits.include.file.footer</name>
+    <value>false</value>
+  </property> 
+ <property>
+   <name>hive.metastore.uris</name>
+   <value>thrift://192.168.0.254:9083</value>
+   <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
+ </property>
+ 
+ <property>
+   <name>javax.jdo.option.ConnectionURL</name>
+   <value>jdbc:mysql://192.168.0.11:3306/hive</value>
+   <description>JDBC connect string for a JDBC metastore</description>
+ </property>
+ 
+ <property>
+   <name>javax.jdo.option.ConnectionDriverName</name>
+   <value>com.mysql.jdbc.Driver</value>
+   <description>Driver class name for a JDBC metastore</description>
+ </property>
+ 
+ <property>
+   <name>javax.jdo.option.ConnectionUserName</name>
+   <value>hive</value>
+   <description>username to use against metastore database</description>
+ </property>
+ 
+ <property>
+   <name>javax.jdo.option.ConnectionPassword</name>
+   <value>VP8XF2t8fJP2SyRY</value>
+   <description>password to use against metastore database</description>
+ </property>
+ 
+ <property>
+   <name>datanucleus.validateTables</name>
+   <value>true</value>
+   <description>validates existing schema against code. turn this on if you want to verify existing schema </description>
+ </property>
+ 
+ <property>
+   <name>datanucleus.validateColumns</name>
+   <value>true</value>
+   <description>validates existing schema against code. turn this on if you want to verify existing schema </description>
+ </property>
+ 
+ <property>
+   <name>datanucleus.validateConstraints</name>
+   <value>true</value>
+   <description>validates existing schema against code. turn this on if you want to verify existing schema </description>
+ </property>
+ 
+ <property>
+   <name>datanucleus.autoCreateSchema</name>
+   <value>false</value>
+   <description>creates necessary schema on a startup if one doesn't exist. set this to false, after creating it once</description>
+ </property>
+ 
+ <property>
+   <name>datanucleus.fixedDatastore</name>
+   <value>true</value>
+ </property>
+ 
+ <property>
+   <name>datanucleus.cache.level2</name>
+   <value>true</value>
+   <description>Use a level 2 cache. Turn this off if metadata is changed independently of Hive metastore server</description>
+ </property>
+ 
+ <property>
+   <name>hive.metastore.warehouse.dir</name>
+   <value>/system/hive/warehouse</value>
+   <description>location of default database for the warehouse</description>
+ </property>
+ 
+ <property>
+   <name>hive.metastore.execute.setugi</name>
+   <value>true</value>
+   <description>In unsecure mode, setting this property to true will cause the metastore to execute DFS operations using the client's reported user and group permissions. Note that this property must be set on both the client and server sides. Further note that its best effort. If client sets its to true and server sets it to false, client setting will be ignored.</description>
+ </property>
+ 
+ <property>
+   <name>hive.session.history.enabled</name>
+   <value>true</value>
+   <description>Whether to log Hive query, query plan, runtime statistics etc.</description>
+ </property>
+ 
+ <property>
+   <name>hive.optimize.index.filter</name>
+   <value>true</value>
+   <description>Whether to enable automatic use of indexes</description>
+ </property>
+  <property>
+    <name>hive.optimize.bucketmapjoin.sortedmerge</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.optimize.bucketmapjoin</name>
+    <value>true</value>
+  </property> 
+ <property>
+   <name>hive.optimize.index.groupby</name>
+   <value>true</value>
+   <description>Whether to enable optimization of group by queries using Aggregate indexes.</description>
+ </property>
+  <property>
+    <name>hive.semantic.analyzer.factory.impl</name>
+    <value>org.apache.hivealog.cli.HCatSemanticAnalyzerFactory</value>
+  </property>
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.server2.tez.initialize.default.sessions</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.server2.tez.sessions.per.default.queue</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>hive.stats.autogather</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.stats.dbclass</name>
+    <value>fs</value>
+  </property>
+  <property>
+    <name>hive.tez.container.size</name>
+    <value>-1</value>
+    <description>If this is not specified (-1), the memory settings from the MapReduce configurations (mapreduce.map.memory.mb) will be used by default.</description>
+  </property>
+  <property>
+    <name>hive.tez.input.format</name>
+    <value>org.apache.hadoop.hive.ql.io.HiveInputFormat</value>
+  </property>
+  <property>
+    <name>hive.tez.java.opts</name>
+    <value></value>
+    <description>If this is not specified, the MapReduce java opts settings (mapreduce.map.java.opts) will be used by default.</description>
+  </property>
+  <property>
+    <name>hive.txn.manager</name>
+    <value>org.apache.hadoop.hive.ql.lockmgr.DummyTxnManager</value>
+  </property>
+  <property>
+    <name>hive.txn.max.open.batch</name>
+    <value>1000</value>
+  </property>
+  <property>
+    <name>hive.txn.timeout</name>
+    <value>300</value>
+  </property>
+  <property>
+    <name>hive.vectorized.execution.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.vectorized.groupby.checkinterval</name>
+    <value>4096</value>
+  </property> 
+ <property>
+   <name>hive.exec.compress.intermediate</name>
+   <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+   <description> This controls whether intermediate files produced by Hive between multiple map reduce jobs are compressed. The compression codec and other options are determined from Hadoop config variables mapred.output.compress* </description>
+ </property>
+ 
+ <property>
+   <name>hive.exec.parallel</name>
+   <value>true</value>
+   <description>Whether to execute jobs in parallel</description>
+ </property>
+ 
+ <property>
+   <name>hive.metastore.sasl.enabled</name>
+   <value>true</value>
+   <description>If true, the metastore Thrift interface will be secured with SASL. Clients must authenticate with Kerberos.</description>
+ </property>
+ 
+ <property>
+   <name>hive.metastore.kerberos.keytab.file</name>
+   <value>/etc/security/keytabs/hive.service.keytab</value>
+   <description>The path to the Kerberos Keytab file containing the metastore Thrift server's service principal.</description>
+ </property>
+ 
+ <property>
+   <name>hive.metastore.kerberos.principal</name>
+   <value>hive/ck.plsm.cs.nccu.edu.tw@PLSM.CS.NCCU.EDU.TW</value>
+   <description>The service principal for the metastore Thrift server. The special string _HOST will be replaced automatically with the correct host name.</description>
+ </property>
+ 
+ <property>
+   <name>hive.support.concurrency</name>
+   <value>true</value>
+   <description>Whether Hive supports concurrency or not. A ZooKeeper instance must be up and running for the default Hive lock manager to support read write locks.</description>
+ </property>
+ 
+ <property>
+   <name>hive.zookeeper.quorum</name>
+   <value>ck.plsm.cs.nccu.edu.tw,leo.plsm.cs.nccu.edu.tw,greg.plsm.cs.nccu.edu.tw,colin.plsm.cs.nccu.edu.tw,maokong.plsm.cs.nccu.edu.tw,muzha.plsm.cs.nccu.edu.tw,wenshan.plsm.cs.nccu.edu.tw</value>
+   <description>The list of ZooKeeper servers to talk to. This is only needed for read/write locks.</description>
+ </property>
+ 
+ <property>
+   <name>hive.zookeeper.namespace</name>
+   <value>hive</value>
+   <description>The parent node under which all ZooKeeper nodes are created.</description>
+ </property>
+ 
+ <property>
+   <name>hive.archive.enabled</name>
+   <value>true</value>
+   <description>Whether archiving operations are permitted</description>
+ </property>
+ 
+ <property>
+   <name>hive.security.authorization.enabled</name>
+   <value>true</value>
+   <description>enable or disable the Hive client authorization</description>
+ </property>
+ 
+ <property>
+   <name>hive.security.authorization.manager</name>
+   <value>org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider</value>
+   <description>The Hive client authorization manager class name.
+   The user defined authorization class should implement interface org.apache.hadoop.hive.ql.security.authorization.HiveAuthorizationProvider.
+   </description>
+ </property>
+ 
+ <property>
+   <name>hive.security.metastore.authorization.manager</name>
+   <value>org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider</value>
+ </property>
+ 
+ <property>
+   <name>hive.security.authenticator.manager</name>
+   <value>org.apache.hadoop.hive.ql.security.ProxyUserAuthenticator</value>
+   <description>hive client authenticator manager class name.
+   The user defined authenticator should implement interface org.apache.hadoop.hive.ql.security.HiveAuthenticationProvider.</description>
+ </property>
+ 
+ <property>
+   <name>hive.security.metastore.authenticator.manager</name>
+   <value>>org.apache.hadoop.hive.ql.security.ProxyUserAuthenticator</value>
+   <description>authenticator manager class name to be used in the metastore for authentication. 
+   The user defined authenticator should implement interface org.apache.hadoop.hive.ql.security.HiveAuthenticationProvider.</description>
+ </property>
+ 
+ <property>
+   <name>hive.security.authorization.createtable.group.grants</name>
+   <value>hadoop:select;hadoop:create</value>
+ </property>
+ 
+ <property>
+   <name>hive.users.in.admin.role</name>
+   <value>atkins</value>
+   <description>Comma separated list of users who are in admin role for bootstrapping.
+     More users can be added in ADMIN role later.</description>
+ </property>
+ 
+ <property>
+   <name>hive.multi.insert.move.tasks.share.dependencies</name>
+   <value>true</value>
+ </property> 
+
+ <property>
+   <name>hive.server2.long.polling.timeout</name>
+   <value>5000</value>
+   <description>Time in milliseconds that HiveServer2 will wait, before responding to asynchronous calls that use long polling</description>
+ </property>
+ 
+ <property>
+   <name>hive.server2.thrift.bind.host</name>
+   <value>0.0.0.0</value>
+   <description>Bind host on which to run the HiveServer2 Thrift interface.
+   Can be overridden by setting $HIVE_SERVER2_THRIFT_BIND_HOST</description>
+ </property>
+ 
+ <property>
+   <name>hive.server2.authentication</name>
+   <value>KERBEROS</value>
+ </property>
+
+ <property>
+   <name>hive.server2.authentication.kerberos.principal</name>
+   <value>hive/ck.plsm.cs.nccu.edu.tw@PLSM.CS.NCCU.EDU.TW</value>
+ </property>
+ 
+ <property>
+   <name>hive.server2.authentication.kerberos.keytab</name>
+   <value>/etc/security/keytabs/hive.service.keytab</value>
+ </property>
+ 
+ <property>
+   <name>hive.server2.authentication.spnego.principal</name>
+   <value>HTTP/_HOST@PLSM.CS.NCCU.EDU.TW</value>
+ </property>
+ 
+ <property>
+   <name>hive.server2.authentication.spnego.keytab</name>
+   <value>/etc/security/keytabs/spnego.service.keytab</value>
+ </property>
+ 
+ <property>
+   <name>hive.prewarm.enabled</name>
+   <value>true</value>
+ </property>
+ 
+ <property>
+   <name>hive.metastore.schema.verification</name>
+   <value>true</value>
+ </property>
+ 
+ <property>
+   <name>hive.server2.tez.default.queues</name>
+   <value>plsm1</value>
+ </property>
+
+    <property>
+        <name>hadoop.proxyuser.hive.hosts</name>
+        <value>*</value>
+    </property>
+
+    <property>
+        <name>hadoop.proxyuser.hive.groups</name>
+        <value>*</value>
+    </property>
+
+  <property>
+    <name>hadoop.proxyuser.HTTP.hosts</name>
+    <value>*</value>
+  </property>
+  <property>
+    <name>hadoop.proxyuser.HTTP.groups</name>
+    <value>*</value>
+  </property>
+
+</configuration>

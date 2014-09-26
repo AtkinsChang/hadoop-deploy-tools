@@ -32,12 +32,12 @@ export JAVA_HOME=${JAVA_HOME:-"/usr/lib/jvm/java-7-oracle-amd64"}
 ################################################################################
 
 # Extra Java CLASSPATH elements.  Optional.
-# export HBASE_CLASSPATH=
+export HBASE_CLASSPATH=/etc/hadoop
 
 ################################################################################
 # The maximum amount of heap to use, in MB. Default is 1000.
 # export HBASE_HEAPSIZE=1000
-export HBASE_HEAPSIZE=1024
+export HBASE_HEAPSIZE=2048
 ################################################################################
 
 # Extra Java runtime options.
@@ -46,7 +46,7 @@ export HBASE_HEAPSIZE=1024
 # see http://wiki.apache.org/hadoop/PerformanceTuning
 ################################################################################
 #export HBASE_OPTS="-XX:+UseConcMarkSweepGC"
-export HBASE_OPTS="-server -XX:+UseConcMarkSweepGC"
+export HBASE_OPTS="-ea -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:+UseParNewGC -XX:+CMSIncrementalMode"
 ################################################################################
 
 # Uncomment one of the below three options to enable java garbage collection logging for the server-side processes.
@@ -62,7 +62,7 @@ export HBASE_OPTS="-server -XX:+UseConcMarkSweepGC"
 # If FILE-PATH is not replaced, the log file(.gc) would still be generated in the HBASE_LOG_DIR .
 ################################################################################
 # export SERVER_GC_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:<FILE-PATH> -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=1 -XX:GCLogFileSize=512M"
-export SERVER_GC_OPTS="-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:ErrorFile=/var/log/hbase/hbase-server_err_pid%p.log -Xloggc:<FILE-PATH> -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=1 -XX:GCLogFileSize=64M"
+#export SERVER_GC_OPTS="-verbose:gc -XX:NewSize=64m -XX:MaxNewSize=64m -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:ErrorFile=/var/log/hbase/hbase-server_err_pid%p.log -Xloggc:<FILE-PATH> -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=1 -XX:GCLogFileSize=64M"
 ################################################################################
 
 # Uncomment one of the below three options to enable java garbage collection logging for the client processes.
@@ -139,7 +139,7 @@ export HBASE_LOG_DIR=/var/log/hbase
 ################################################################################
 # The directory where pid files are stored. /tmp by default.
 # export HBASE_PID_DIR=/var/hadoop/pids
-export HBASE_PID_DIR=/var/hadoop/pids
+export HBASE_PID_DIR=/var/run/hbase
 ################################################################################
 
 # Seconds to sleep between slave commands.  Unset by default.  This
@@ -150,7 +150,7 @@ export HBASE_PID_DIR=/var/hadoop/pids
 ################################################################################
 # Tell HBase whether it should manage it's own instance of Zookeeper or not.
 # export HBASE_MANAGES_ZK=true
-# export HBASE_MANAGES_ZK=true
+export HBASE_MANAGES_ZK=false
 ################################################################################
 
 ################################################################################
